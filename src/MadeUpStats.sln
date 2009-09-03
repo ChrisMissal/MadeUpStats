@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Domain", "MadeUpStats.Domain\MadeUpStats.Domain.csproj", "{05CD5BE0-5A2F-40A3-A367-3C654608427A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Data", "MadeUpStats.Data\MadeUpStats.Data\MadeUpStats.Data.csproj", "{11C14CF5-1632-4878-9EE3-B7D9772E2399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Services", "MadeUpStats.Services\MadeUpStats.Services\MadeUpStats.Services.csproj", "{82587D25-635F-45CD-AD39-1B98606A2969}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{03CCEEDD-F92A-4A44-818F-6164FB3167EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Tests", "MadeUpStats.Tests\MadeUpStats.Tests\MadeUpStats.Tests.csproj", "{6BACF772-3538-4861-80CC-26511267A7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Framework", "MadeUpStats.Framework\MadeUpStats.Framework\MadeUpStats.Framework.csproj", "{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Web", "MadeUpStats.Web\MadeUpStats.Web\MadeUpStats.Web.csproj", "{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaskList", "TaskList", "{E07EBA3C-944A-4886-9EF6-E8DE7E52F707}"
+	ProjectSection(SolutionItems) = preProject
+		todo.txt = todo.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05CD5BE0-5A2F-40A3-A367-3C654608427A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05CD5BE0-5A2F-40A3-A367-3C654608427A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05CD5BE0-5A2F-40A3-A367-3C654608427A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05CD5BE0-5A2F-40A3-A367-3C654608427A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C14CF5-1632-4878-9EE3-B7D9772E2399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C14CF5-1632-4878-9EE3-B7D9772E2399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C14CF5-1632-4878-9EE3-B7D9772E2399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C14CF5-1632-4878-9EE3-B7D9772E2399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82587D25-635F-45CD-AD39-1B98606A2969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82587D25-635F-45CD-AD39-1B98606A2969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82587D25-635F-45CD-AD39-1B98606A2969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82587D25-635F-45CD-AD39-1B98606A2969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BACF772-3538-4861-80CC-26511267A7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BACF772-3538-4861-80CC-26511267A7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BACF772-3538-4861-80CC-26511267A7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BACF772-3538-4861-80CC-26511267A7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6BACF772-3538-4861-80CC-26511267A7E7} = {03CCEEDD-F92A-4A44-818F-6164FB3167EF}
+	EndGlobalSection
+EndGlobal

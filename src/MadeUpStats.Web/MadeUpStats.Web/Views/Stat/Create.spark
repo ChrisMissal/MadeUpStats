@@ -1,0 +1,43 @@
+﻿<use master="Application"/>
+
+<content name="head">
+	<title>Made Up Stats, Useless Information and Just Plain Lies!</title>
+</content>
+
+<content name="pageHeader">
+	<h2>Create a Stat</h2>
+</content>
+
+<content name="body">
+	<var model="ViewData.Model as MadeUpStats.Web.Models.Stat.CreateViewModel" />
+	<form action="/Stat/Create" method="post">
+		<fieldset>
+			<legend>Create a New Stat</legend>
+			<input type="text" name="Author" value="${model.CreateData.Author}" />
+			<select name="StatValue">
+				<option selected="selected"></option>
+				<optgroup label="Fractions">
+				<for each="var obj in model.FractionalStatValues">
+					<test if="model.CreateData.StatValue == obj.Text">
+					<option value="${obj.Text}" selected="selected">${obj.Text}</option>
+					<else />
+					<option value="${obj.Text}">${obj.Text}</option>
+					</test>
+				</for>
+				</optgroup>
+				<optgroup label="Percentages">
+				<for each="var obj in model.PercentageStatValues">
+					<test if="model.CreateData.StatValue == obj.Text">
+					<option value="${obj.Text}" selected="selected">${obj.Text}</option>
+					<else />
+					<option value="${obj.Text}">${obj.Text}</option>
+					</test>
+				</for>
+				</optgroup>
+			</select>
+			<textarea name="Description" rows="4" cols="50">${model.CreateData.Description}</textarea>
+			<input type="text" name="TagString" value="${model.CreateData.TagString}" />
+			<input type="submit" value="Create My Stat" />
+		</fieldset>
+	</form>
+</content>

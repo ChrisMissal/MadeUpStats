@@ -1,0 +1,8 @@
+<var messages="ViewData.Model as IEnumerable[[string]]"/>
+<test if="messages != null && messages.Count() ]] 0">
+<ul>
+<for each="var message in messages">
+    <li>${message}</li>
+</for>
+</ul>
+</test>

@@ -1,0 +1,17 @@
+﻿<use master="Application"/>
+
+<content name="head">
+	<title>Made Up Stats, Useless Information and Just Plain Lies!</title>
+</content>
+
+<content name="body">
+    <p>The site that exists so that you can astound and amaze your friends with stuff that they 
+		didn't know. The obvious reason they don't know these things is because they're made 
+		up and just for fun.</p>
+	<var model="ViewData.Model as MadeUpStats.Web.Models.Home.IndexViewModel" />
+	<test if="model.FeaturedStats.Count() ]] 1">
+	<for each="var stat in model.FeaturedStats">
+		<li><a href="/Stat/${stat.Id}">${stat.GetText()}</a></li>
+	</for>
+	</test>
+</content>

@@ -1,0 +1,10 @@
+﻿<content name="head">
+  <script src="~/content/js/jquery-ui-accordian.js" once="jquery-accordian"></script>
+</content>
+<div id="sidebar">
+	<ul>
+		<li><a href="/Home">Home</a></li>
+		<li><a href="/Stat/Create">Create a Stat</a></li>
+		<li><a href="/Tags">Browse Tags</a></li>
+	</ul>
+</div>

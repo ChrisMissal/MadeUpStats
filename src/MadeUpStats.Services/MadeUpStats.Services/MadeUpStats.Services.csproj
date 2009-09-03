@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82587D25-635F-45CD-AD39-1B98606A2969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MadeUpStats.Services</RootNamespace>
+    <AssemblyName>MadeUpStats.Services</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorService.cs" />
+    <Compile Include="IAuthorService.cs" />
+    <Compile Include="IStatService.cs" />
+    <Compile Include="ITagService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatService.cs" />
+    <Compile Include="TagService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MadeUpStats.Data\MadeUpStats.Data\MadeUpStats.Data.csproj">
+      <Project>{11C14CF5-1632-4878-9EE3-B7D9772E2399}</Project>
+      <Name>MadeUpStats.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MadeUpStats.Domain\MadeUpStats.Domain.csproj">
+      <Project>{05CD5BE0-5A2F-40A3-A367-3C654608427A}</Project>
+      <Name>MadeUpStats.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MadeUpStats.Framework\MadeUpStats.Framework\MadeUpStats.Framework.csproj">
+      <Project>{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}</Project>
+      <Name>MadeUpStats.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
