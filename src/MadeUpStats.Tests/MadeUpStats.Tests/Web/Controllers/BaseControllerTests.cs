@@ -7,7 +7,7 @@ namespace MadeUpStats.Tests.Web.Controllers
     public class BaseControllerTests
     {
         [Fact]
-        public void BaseController_should_return_a_View_name_by_ViewModel_type_name_minus_Model()
+        public void BaseController_should_return_a_View_name_by_ViewModel_type_name_minus_ViewModel()
         {
             var fakeModel = new FakeViewModel();
             var baseController = new FakeBaseController();

@@ -9,9 +9,10 @@
 		didn't know. The obvious reason they don't know these things is because they're made 
 		up and just for fun.</p>
 	<var model="ViewData.Model as MadeUpStats.Web.Models.Home.IndexViewModel" />
-	<test if="model.FeaturedStats.Count() ]] 1">
+
+	<ul if="model.FeaturedStats.Count() ]] 1">
 	<for each="var stat in model.FeaturedStats">
-		<li><a href="/Stat/${stat.Id}">${stat.GetText()}</a></li>
+		<li>${Html.ActionLink<StatController>(x => x.Index(stat.Id), stat.Description)}</li>
 	</for>
-	</test>
+	</ul>
 </content>

@@ -56,7 +56,7 @@ namespace MadeUpStats.Tests.Web.Controllers
             Assert.Equal(expectedStatText, model.StatText);
         }
 
-        [Fact, Trait("some", "1")]
+        [Fact]
         public void StatController_should_return_a_ViewResult_with_a_StatCreateModel_for_Create()
         {
             var controller = GetController();
@@ -66,7 +66,7 @@ namespace MadeUpStats.Tests.Web.Controllers
             Assert.IsType(typeof (CreateViewModel), view.ViewData.Model);
         }
 
-        [Fact, Trait("some", "2")]
+        [Fact]
         public void StatController_should_call_StatService_getStatText_with_the_supplied_id_for_Index()
         {
             var controller = GetController();
@@ -125,10 +125,10 @@ namespace MadeUpStats.Tests.Web.Controllers
 
         public override StatController GetController()
         {
-            if(statService == null) statService = new Mock<IStatService>();
-            if(authorService == null) authorService = new Mock<IAuthorService>();
-            if(tagService == null) tagService = new Mock<ITagService>();
-            if(userInterfaceManager == null) userInterfaceManager = new Mock<IUserInterfaceManager>();
+            statService = new Mock<IStatService>();
+            authorService = new Mock<IAuthorService>();
+            tagService = new Mock<ITagService>();
+            userInterfaceManager = new Mock<IUserInterfaceManager>();
 
             return new StatController(statService.Object, authorService.Object, tagService.Object, userInterfaceManager.Object);
         }

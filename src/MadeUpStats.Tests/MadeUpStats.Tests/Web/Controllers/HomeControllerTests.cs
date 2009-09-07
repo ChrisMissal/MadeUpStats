@@ -21,7 +21,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         }
 
         [Fact]
-        public void HomeController_should_call_StatService_GetMostRecent_for_Index()
+        public void HomeController_should_call_StatService_GetMostRecentStats_for_Index()
         {
             var controller = GetController();
             controller.Index();
@@ -29,7 +29,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         }
 
         [Fact]
-        public void HomeController_should_return_a_HomeAboutViewModel_for_About()
+        public void HomeController_should_return_an_AboutViewModel_for_About()
         {
             var controller = GetController();
             var view = controller.About() as ViewResult;
@@ -38,8 +38,8 @@ namespace MadeUpStats.Tests.Web.Controllers
 
         public override HomeController GetController()
         {
-            if (statService == null) statService = new Mock<IStatService>();
-            if (userInterfaceManager == null) userInterfaceManager = new Mock<IUserInterfaceManager>();
+            statService = new Mock<IStatService>();
+            userInterfaceManager = new Mock<IUserInterfaceManager>();
 
             return new HomeController(statService.Object, userInterfaceManager.Object);
         }

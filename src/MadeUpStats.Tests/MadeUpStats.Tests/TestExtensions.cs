@@ -1,16 +1,9 @@
-using MadeUpStats.Tests.Fakes;
-using MadeUpStats.Web.Controllers;
 using Xunit;
 
 namespace MadeUpStats.Tests
 {
     public static class TestExtensions
     {
-        public static BaseController FakeBaseController
-        {
-            get { return new FakeBaseController(); }
-        }
-
         public static void ShouldBe(this object @this, object other)
         {
             Assert.Same(other, @this);

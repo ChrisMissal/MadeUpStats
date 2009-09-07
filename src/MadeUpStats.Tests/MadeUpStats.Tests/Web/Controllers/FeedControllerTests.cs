@@ -12,8 +12,8 @@ namespace MadeUpStats.Tests.Web.Controllers
 
         public override FeedController GetController()
         {
-            if(feedService == null) feedService = new Mock<IFeedService>();
-            if (userInterfaceManager == null) userInterfaceManager = new Mock<IUserInterfaceManager>();
+            feedService = new Mock<IFeedService>();
+            userInterfaceManager = new Mock<IUserInterfaceManager>();
 
             return new FeedController(feedService.Object, userInterfaceManager.Object);
         }

@@ -8,12 +8,16 @@ namespace MadeUpStats.Tests.Web.Routing
     public class RouteConfiguratorTests
     {
         [Fact]
-        public void StatsController_should_map_to_domain_slash_id()
+        public void Routes_map_to_the_Controllers_I_tell_them_to()
         {
             new RouteConfigurator().RegisterRoutes();
-            //"~/Stat/Create".ShouldMapTo<StatController>(x => x.Create());
-            //"~/Stat/12345".ShouldMapTo<StatController>(x => x.Index(12345));
-            //"~/Tag/nintendo".ShouldMapTo<TagController>(x => x.Index("nintendo"));
+            "~/".ShouldMapTo<HomeController>(x => x.Index());
+            "~/Information".ShouldMapTo<HomeController>(x => x.Information());
+            "~/About".ShouldMapTo<HomeController>(x => x.About());
+            "~/Stat/Create".ShouldMapTo<StatController>(x => x.Create());
+            "~/Stat/12345".ShouldMapTo<StatController>(x => x.Index(12345));
+            "~/Tags".ShouldMapTo<TagsController>(x => x.Index());
+            "~/Tags/nintendo".ShouldMapTo<TagsController>(x => x.Index("nintendo"));
         }
     }
 }

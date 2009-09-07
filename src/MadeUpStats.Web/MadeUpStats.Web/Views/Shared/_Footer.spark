@@ -1,12 +1,7 @@
 <div id="footer">
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="/Stat/Create">Stats</a></li>
-		<li><a href="/Tags">Browse Tags</a></li>
-	</ul>
 	<p>MadeUpStats.com by <a href="http://chrismissal.com">Chris Missal</a> is
 		meant to be a playground for trying out new technologies and practices.
 		For more information and feature requests, visit the 
-		<a href="/Information">information</a> page.</p>
+		${Html.ActionLink<HomeController>(x => x.Information(), "information")} page.</p>
 	<p>MadeUpStats.com &#169; 2008-${System.DateTime.Now.Year}</p>
 </div>

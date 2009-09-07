@@ -30,11 +30,6 @@ namespace MadeUpStats.Services
             Array.ForEach(tags, stat.AddTag);
         }
 
-        public StatPreview GetStatPreview(IStatValue statValue, string description)
-        {
-            return new StatPreview(statValue, description);
-        }
-
         public Stat GetStat(long id)
         {
             return statRepository.GetById(id);
@@ -48,6 +43,11 @@ namespace MadeUpStats.Services
         public void Update(Stat stat)
         {
             statRepository.SaveOrUpdate(stat);
+        }
+
+        public IEnumerable<Stat> GetStatsByTag(Tag tag)
+        {
+            throw new NotImplementedException();
         }
     }
 }

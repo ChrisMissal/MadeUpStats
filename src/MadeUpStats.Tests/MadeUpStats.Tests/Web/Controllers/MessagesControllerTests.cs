@@ -17,7 +17,7 @@ namespace MadeUpStats.Tests.Web.Controllers
 
         public override MessagesController GetController()
         {
-            if (userInterfaceManager == null) userInterfaceManager = new Mock<IUserInterfaceManager>();
+            userInterfaceManager = new Mock<IUserInterfaceManager>();
 
             return new MessagesController(userInterfaceManager.Object);
         }

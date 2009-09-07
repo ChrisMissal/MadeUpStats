@@ -9,12 +9,12 @@ namespace MadeUpStats.Services
 
         void TagStat(Stat stat, params Tag[] tags);
 
-        StatPreview GetStatPreview(IStatValue statValue, string description);
-
         Stat GetStat(long id);
 
         IEnumerable<Stat> GetMostRecentStats(int count);
 
         void Update(Stat stat);
+
+        IEnumerable<Stat> GetStatsByTag(Tag tag);
     }
 }

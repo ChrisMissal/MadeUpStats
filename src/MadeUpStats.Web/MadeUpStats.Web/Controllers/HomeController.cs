@@ -26,5 +26,11 @@ namespace MadeUpStats.Web.Controllers
             var model = new AboutViewModel();
             return View(model);
         }
+
+        public ActionResult Information()
+        {
+            var model = new InformationViewModel();
+            return View(model);
+        }
     }
 }

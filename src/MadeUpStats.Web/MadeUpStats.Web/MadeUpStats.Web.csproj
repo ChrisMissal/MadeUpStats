@@ -75,7 +75,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\FeedController.cs" />
-    <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="ModelStateRebindAttribute.cs" />
@@ -100,6 +100,7 @@
     <Compile Include="Models\Error\IndexViewModel.cs" />
     <Compile Include="Models\Home\AboutViewModel.cs" />
     <Compile Include="Models\Home\IndexViewModel.cs" />
+    <Compile Include="Models\Home\InformationViewModel.cs" />
     <Compile Include="Models\IModelProvider.cs" />
     <Compile Include="Models\Stat\IndexViewModel.cs" />
     <Compile Include="Models\Stat\CreateViewModel.cs" />
@@ -124,6 +125,7 @@
     <Content Include="Scripts\jquery-1.3.2.min.js" />
     <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
+    <None Include="Views\Home\Information.spark" />
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\MessageList.spark" />
