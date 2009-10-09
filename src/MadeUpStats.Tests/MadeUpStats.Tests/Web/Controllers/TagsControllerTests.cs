@@ -1,4 +1,3 @@
-using System;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
 using MadeUpStats.Web;

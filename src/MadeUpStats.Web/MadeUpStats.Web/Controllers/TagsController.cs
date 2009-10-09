@@ -1,7 +1,7 @@
-using System;
 using System.Web.Mvc;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
+using MadeUpStats.Web.Models;
 using MadeUpStats.Web.Models.Tag;
 
 namespace MadeUpStats.Web.Controllers
@@ -24,11 +24,11 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Index(string tagString)
+        public ActionResult Index(string tagName)
         {
             var model = new IndexViewModel();
-            model.TagName = tagString;
-            model.Stats = statService.GetStatsByTag(new Tag(tagString));
+            model.TagName = tagName;
+            model.Stats = statService.GetStatsByTag(new Tag(tagName));
             return View(model);
         }
     }

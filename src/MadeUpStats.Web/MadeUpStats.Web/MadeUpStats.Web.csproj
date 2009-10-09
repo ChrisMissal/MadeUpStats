@@ -105,6 +105,7 @@
     <Compile Include="Models\Stat\IndexViewModel.cs" />
     <Compile Include="Models\Stat\CreateViewModel.cs" />
     <Compile Include="Models\Stat\CreateDataModel.cs" />
+    <Compile Include="Models\TagInput.cs" />
     <Compile Include="Models\Tag\IndexViewModel.cs" />
     <Compile Include="Models\ViewModel.cs" />
     <Compile Include="RebindTempDataAttribute.cs" />

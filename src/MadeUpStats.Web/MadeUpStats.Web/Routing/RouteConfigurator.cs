@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using MadeUpStats.Web.Controllers;
+using MadeUpStats.Web.Models;
 using MvcContrib.Routing;
 
 namespace MadeUpStats.Web.Routing
@@ -22,30 +23,29 @@ namespace MadeUpStats.Web.Routing
 
             MvcRoute.MappUrl("")
                     .ToDefaultAction<HomeController>(x => x.Index())
-                    .WithConstraints(new { controller = "Home", action = "Index" })
-                    .AddWithName("Home-Index", routes);
-            MvcRoute.MappUrl("Tags")
-                    .ToDefaultAction<TagsController>(x => x.Index())
-                    .WithConstraints(new { controller = "Tags" })
-                    .AddWithName("Tags-Index", routes);
-            MvcRoute.MappUrl("{action}")
+                    .AddWithName("home-index", routes);
+            MvcRoute.MappUrl("information")
                     .ToDefaultAction<HomeController>(x => x.Information())
-                    .WithConstraints(new {controller = "Home"})
-                    .AddWithName("Home-Information", routes);
+                    .AddWithName("information", routes);
+            MvcRoute.MappUrl("about")
+                    .ToDefaultAction<HomeController>(x => x.About())
+                    .AddWithName("about", routes);
 
-            MvcRoute.MappUrl("{controller}/{action}")
+            MvcRoute.MappUrl("tags/{tagName}")
+                    .WithConstraints(new { tagName = "^[A-Za-z0-9\\-\\.]+$" })
+                    .ToDefaultAction<TagsController>(x => x.Index(null))
+                    .AddWithName("tags-tagName", routes);
+            MvcRoute.MappUrl("all-tags")
+                    .ToDefaultAction<TagsController>(x => x.Index())
+                    .AddWithName("all-tags", routes);
+
+            MvcRoute.MappUrl("create-stat")
                     .ToDefaultAction<StatController>(x => x.Create())
-                    .WithConstraints(new { controller = "Stat", action = "Create" })
-                    .AddWithName("Stat", routes);
-            MvcRoute.MappUrl("{controller}/{id}")
+                    .AddWithName("create-stat", routes);
+            MvcRoute.MappUrl("{id}")
+                    .WithConstraints(new { id = "^[0-9]+$" })
                     .ToDefaultAction<StatController>(x => x.Index(0))
-                    .WithConstraints(new { controller = "Stat", action = "Index" })
-                    .AddWithName("Stat-Index", routes);
-
-            MvcRoute.MappUrl("{controller}/{tagString}")
-                    .ToDefaultAction<TagsController>(x => x.Index(""))
-                    .WithConstraints(new { controller = "Tags" })
-                    .AddWithName("Tags-Index-tagString", routes);
+                    .AddWithName("stat-id", routes);
 
             // Default/fallback route
             routes.MapRoute("Default", "{controller}/{action}/{id}",

@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dependencies\mvccontrib\MvcContrib.TestHelper.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dependencies\rhinomocks\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=2.5.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dependencies\structuremap\StructureMap.dll</HintPath>
@@ -97,6 +101,7 @@
     <Compile Include="Web\Controllers\StatControllerTests.cs" />
     <Compile Include="Web\Controllers\TagsControllerTests.cs" />
     <Compile Include="Web\MadeUpStatsConfigurationTests.cs" />
+    <Compile Include="Web\Routing\OutBoundUrlTests.cs" />
     <Compile Include="Web\Routing\RouteConfiguratorTests.cs" />
     <Compile Include="Web\Services\FeedServiceTests.cs" />
     <Compile Include="Web\UserInterfaceManagerTests.cs" />
