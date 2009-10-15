@@ -1,6 +1,4 @@
-using MadeUpStats.Domain;
 using MadeUpStats.Web.Controllers;
-using MadeUpStats.Web.Models;
 using MadeUpStats.Web.Routing;
 using MvcContrib.TestHelper;
 using Xunit;

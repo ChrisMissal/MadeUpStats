@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using MvcContrib;
 
@@ -20,17 +21,11 @@ namespace MadeUpStats.Web
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var controller = filterContext.Controller;
-
-            foreach (var type in types)
+            
+            foreach (var type in types.Where(type => controller.TempData.Contains(type)))
             {
-                if (controller.TempData.Contains(type))
-                {
-                    var data = controller.TempData.Get(type);
-
-                    var defaultObject = !type.IsArray ? Activator.CreateInstance(type) : Array.CreateInstance(type.GetElementType(), 0);
-
-                    controller.ViewData.Model = controller.TempData.GetOrDefault(type.FullName, defaultObject);
-                }
+                var defaultObject = !type.IsArray ? Activator.CreateInstance(type) : Array.CreateInstance(type.GetElementType(), 0);
+                controller.ViewData.Model = controller.TempData.GetOrDefault(type.FullName, defaultObject);
             }
         }
     }

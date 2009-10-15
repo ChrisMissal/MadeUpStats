@@ -101,8 +101,10 @@
     <Compile Include="Web\Controllers\StatControllerTests.cs" />
     <Compile Include="Web\Controllers\TagsControllerTests.cs" />
     <Compile Include="Web\MadeUpStatsConfigurationTests.cs" />
+    <Compile Include="Web\MadeUpStatsConventionsTests.cs" />
     <Compile Include="Web\Routing\OutBoundUrlTests.cs" />
     <Compile Include="Web\Routing\RouteConfiguratorTests.cs" />
+    <Compile Include="Web\Services\DateFormatterTests.cs" />
     <Compile Include="Web\Services\FeedServiceTests.cs" />
     <Compile Include="Web\UserInterfaceManagerTests.cs" />
     <Compile Include="Web\StructureMapControllerFactoryTests.cs" />

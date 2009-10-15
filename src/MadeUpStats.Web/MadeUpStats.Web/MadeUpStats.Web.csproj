@@ -78,6 +78,7 @@
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="MadeUpStatsConventions.cs" />
     <Compile Include="ModelStateRebindAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="RebindTempDataAttribute.cs" />
     <Compile Include="Routing\IRouteConfigurator.cs" />
     <Compile Include="Routing\RouteConfigurator.cs" />
+    <Compile Include="Services\DateFormatter.cs" />
     <Compile Include="Services\FeedService.cs" />
     <Compile Include="Services\IFeedService.cs" />
     <Compile Include="UserInterfaceManager.cs" />

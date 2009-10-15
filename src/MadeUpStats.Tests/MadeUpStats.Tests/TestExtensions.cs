@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace MadeUpStats.Tests
@@ -27,6 +28,26 @@ namespace MadeUpStats.Tests
         public static void ShouldBeOfType<T>(this object @this)
         {
             Assert.IsType(typeof (T), @this);
+        }
+
+        public static TimeSpan SecondsAgo(this int @this)
+        {
+            return new TimeSpan(0, 0, 0, @this);
+        }
+
+        public static TimeSpan MinutesAgo(this int @this)
+        {
+            return new TimeSpan(0, 0, @this, 0);
+        }
+
+        public static TimeSpan HoursAgo(this int @this)
+        {
+            return new TimeSpan(@this, 0, 0);
+        }
+
+        public static TimeSpan DaysAgo(this int @this)
+        {
+            return new TimeSpan(@this, 0, 0, 0);
         }
     }
 }

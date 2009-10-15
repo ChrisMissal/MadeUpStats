@@ -47,7 +47,7 @@ namespace MadeUpStats.Web.Controllers
         {
             try
             {
-                Validate.NotNull(createDataModel, "createDataModel");
+                Validate.NotNull(createDataModel, "Stat data");
 
                 var author = authorService.GetAuthor(createDataModel.Author);
                 var stat = statService.CreateStat(author, createDataModel.Title, createDataModel.Description);

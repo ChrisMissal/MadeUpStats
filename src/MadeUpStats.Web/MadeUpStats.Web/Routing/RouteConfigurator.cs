@@ -1,7 +1,6 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using MadeUpStats.Web.Controllers;
-using MadeUpStats.Web.Models;
 using MvcContrib.Routing;
 
 namespace MadeUpStats.Web.Routing

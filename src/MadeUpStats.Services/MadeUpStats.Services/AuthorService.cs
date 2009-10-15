@@ -7,8 +7,8 @@ namespace MadeUpStats.Services
     {
         public Author GetAuthor(string authorName)
         {
-            Validate.NotNull(authorName, "authorName");
-            Validate.NotEmpty(authorName, "authorName");
+            Validate.NotNull(authorName, "Author name");
+            Validate.NotEmpty(authorName, "Author name");
 
             return new Author(authorName);
         }
