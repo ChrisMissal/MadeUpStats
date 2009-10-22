@@ -18,14 +18,14 @@ namespace MadeUpStats.Web.Controllers
 
         public ActionResult Index()
         {
-            var model = new IndexViewModel();
+            var model = new TagDisplay();
             model.Tags = tagService.GetTags(50);
             return View(model);
         }
 
         public ActionResult Index(string tagName)
         {
-            var model = new IndexViewModel();
+            var model = new TagDisplay();
             model.TagName = tagName;
             model.Stats = statService.GetStatsByTag(new Tag(tagName));
             return View(model);

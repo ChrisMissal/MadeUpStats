@@ -1,11 +1,9 @@
-namespace MadeUpStats.Web.Models.Stat
+namespace MadeUpStats.Web.Models
 {
-    public class CreateDataModel : DataModel
+    public class StatInput : InputBase
     {
-        public override long Id { get; set; }
         public virtual string Description { get; set; }
         public virtual string TagString { get; set; }
-        public virtual string StatValue { get; set; }
         public virtual string Author { get; set; }
         public virtual string Title { get; set; }
     }

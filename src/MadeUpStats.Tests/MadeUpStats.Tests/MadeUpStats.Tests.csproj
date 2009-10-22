@@ -86,8 +86,9 @@
     <Compile Include="Domain\StatTests.cs" />
     <Compile Include="Domain\TagTests.cs" />
     <Compile Include="Fakes\FakeBaseController.cs" />
-    <Compile Include="Fakes\FakeViewModel.cs" />
+    <Compile Include="Fakes\FakeDisplay.cs" />
     <Compile Include="Services\AuthorServiceTests.cs" />
+    <Compile Include="Services\MadeUpStatsMapperTests.cs" />
     <Compile Include="Services\StatServiceTests.cs" />
     <Compile Include="Services\TagServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Web\Routing\RouteConfiguratorTests.cs" />
     <Compile Include="Web\Services\DateFormatterTests.cs" />
     <Compile Include="Web\Services\FeedServiceTests.cs" />
+    <Compile Include="Web\Services\StringSplitterTests.cs" />
     <Compile Include="Web\UserInterfaceManagerTests.cs" />
     <Compile Include="Web\StructureMapControllerFactoryTests.cs" />
   </ItemGroup>

@@ -4,9 +4,10 @@ using MadeUpStats.Domain;
 using MadeUpStats.Services;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
-using MadeUpStats.Web.Models.Stat;
+using MadeUpStats.Web.Models;
 using Moq;
 using Xunit;
+using StatInput=MadeUpStats.Web.Models.StatInput;
 
 namespace MadeUpStats.Tests.Web.Controllers
 {
@@ -39,7 +40,7 @@ namespace MadeUpStats.Tests.Web.Controllers
 
             var view = controller.Index(0) as ViewResult;
 
-            Assert.IsType(typeof(IndexViewModel), view.ViewData.Model);
+            Assert.IsType(typeof(StatDisplay), view.ViewData.Model);
         }
 
         [Fact]
@@ -51,7 +52,7 @@ namespace MadeUpStats.Tests.Web.Controllers
             statService.Setup(x => x.GetStat(id)).Returns(new Stat("", expectedStatText, null, DateTime.Now));
 
             var view = controller.Index(0) as ViewResult;
-            var model = view.ViewData.Model as IndexViewModel;
+            var model = view.ViewData.Model as StatDisplay;
 
             Assert.Equal(expectedStatText, model.StatText);
         }
@@ -63,7 +64,7 @@ namespace MadeUpStats.Tests.Web.Controllers
 
             var view = controller.Create() as ViewResult;
 
-            Assert.IsType(typeof (CreateViewModel), view.ViewData.Model);
+            Assert.IsType(typeof (StatInput), view.ViewData.Model);
         }
 
         [Fact]
@@ -80,7 +81,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         [Fact]
         public void StatController_should_call_AuthorService_GetAuthor_on_Create()
         {
-            GetController().Create(new CreateDataModel());
+            GetController().Create(new StatInput());
 
             authorService.Verify(x => x.GetAuthor(It.IsAny<string>()), Times.Once());
         }
@@ -88,7 +89,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         [Fact]
         public void StatController_should_call_StatService_CreateStat_on_Create()
         {
-            GetController().Create(new CreateDataModel());
+            GetController().Create(new StatInput());
 
             statService.Verify(x => x.CreateStat(null, null, It.IsAny<string>()), Times.Once());
         }
@@ -96,7 +97,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         [Fact]
         public void StatController_should_return_RedirectToRouteResult_on_Create()
         {
-            var result = GetController().Create(new CreateDataModel());
+            var result = GetController().Create(new StatInput());
 
             result.ShouldBeOfType<RedirectToRouteResult>();
         }
@@ -105,7 +106,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         public void StatController_should_not_call_TagService_if_TagString_is_empty()
         {
             var controller = GetController();
-            var model = new CreateDataModel { TagString = "" };
+            var model = new StatInput { TagString = "" };
 
             controller.Create(model);
 
@@ -116,7 +117,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         public void StatController_should_call_TagService_if_TagString_is_not_empty()
         {
             var controller = GetController();
-            var model = new CreateDataModel{TagString = "something, another"};
+            var model = new StatInput{TagString = "something, another"};
 
             controller.Create(model);
 

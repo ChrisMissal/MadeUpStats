@@ -44,6 +44,10 @@ namespace MadeUpStats.Web
                     .TheDefaultIsConcreteType<FeedService>()
                     .AsSingletons();
 
+                x.ForRequestedType<IMapper>()
+                    .TheDefaultIsConcreteType<MadeUpStatsMapper>()
+                    .AsSingletons();
+
                 x.ForRequestedType<IUserInterfaceManager>()
                     .TheDefaultIsConcreteType<UserInterfaceManager>()
                     .AsSingletons();

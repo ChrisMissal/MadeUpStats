@@ -1,5 +1,5 @@
 using System.Web.Mvc;
-using MadeUpStats.Web.Models.Error;
+using MadeUpStats.Web.Models;
 
 namespace MadeUpStats.Web.Controllers
 {
@@ -11,7 +11,7 @@ namespace MadeUpStats.Web.Controllers
 
         public ActionResult Error()
         {
-            return View(new IndexViewModel());
+            return View(new ErrorIndexDisplay());
         }
     }
 }

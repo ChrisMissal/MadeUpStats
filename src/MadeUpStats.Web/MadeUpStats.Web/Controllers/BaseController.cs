@@ -17,7 +17,7 @@ namespace MadeUpStats.Web.Controllers
             userInterfaceManager.AddMessage(message);
         }
 
-        public virtual ViewResult View(ViewModel model)
+        public virtual ViewResult View(DisplayBase model)
         {
             return View(model.GetViewName(), model);
         }

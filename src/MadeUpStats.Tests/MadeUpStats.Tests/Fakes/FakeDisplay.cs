@@ -2,7 +2,7 @@ using MadeUpStats.Web.Models;
 
 namespace MadeUpStats.Tests.Fakes
 {
-    public class FakeViewModel : ViewModel
+    public class FakeDisplay : DisplayBase
     {
     }
 }

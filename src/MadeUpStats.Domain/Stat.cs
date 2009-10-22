@@ -11,11 +11,12 @@ namespace MadeUpStats.Domain
         private readonly Author author;
         private readonly DateTime createDate;
         private readonly long id;
-        private string title;
+        private readonly string title;
 
         public Stat(string title, string description, Author author, DateTime createDate)
         {
             this.description = description;
+            this.title = title;
             this.author = author;
             this.createDate = createDate;
         }

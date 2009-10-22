@@ -2,8 +2,9 @@ using System;
 using System.Web.Mvc;
 using MadeUpStats.Framework;
 using MadeUpStats.Services;
-using MadeUpStats.Web.Models.Stat;
+using MadeUpStats.Web.Models;
 using MvcContrib;
+using StatInput=MadeUpStats.Web.Models.StatInput;
 
 namespace MadeUpStats.Web.Controllers
 {
@@ -26,35 +27,34 @@ namespace MadeUpStats.Web.Controllers
             if (stat == null)
                 return RedirectToAction("Index", "Home");
 
-            var model = new IndexViewModel();
+            var model = new StatDisplay();
             model.StatText = stat.Description;
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(CreateDataModel))]
+        [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(StatInput))]
         public ActionResult Create()
         {
-            var model = new CreateViewModel();
+            var createDataModel = ViewData.Model as StatInput;
 
-            var createDataModel = ViewData.Model as CreateDataModel;
-            model.CreateData = createDataModel ?? new CreateDataModel();
+            var model = createDataModel ?? new StatInput();
 
             return View(model);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(CreateDataModel createDataModel)
+        public ActionResult Create(StatInput statInput)
         {
             try
             {
-                Validate.NotNull(createDataModel, "Stat data");
+                Validate.NotNull(statInput, "Stat data");
 
-                var author = authorService.GetAuthor(createDataModel.Author);
-                var stat = statService.CreateStat(author, createDataModel.Title, createDataModel.Description);
+                var author = authorService.GetAuthor(statInput.Author);
+                var stat = statService.CreateStat(author, statInput.Title, statInput.Description);
 
-                if(!createDataModel.TagString.IsNullOrEmpty())
+                if(!statInput.TagString.IsNullOrEmpty())
                 {
-                    var tags = tagService.CreateTags(createDataModel.TagString);
+                    var tags = tagService.CreateTags(statInput.TagString);
                     tags.ForEach(stat.AddTag);
                 }
                 statService.Update(stat);
@@ -64,7 +64,7 @@ namespace MadeUpStats.Web.Controllers
             catch (Exception ex)
             {
                 AddMessage(ex.Message);
-                TempData.Add(createDataModel);
+                TempData.Add(statInput);
             }
 
             return RedirectToAction("Create");

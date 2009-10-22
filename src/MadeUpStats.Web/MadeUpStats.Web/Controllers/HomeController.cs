@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
+using MadeUpStats.Domain;
 using MadeUpStats.Services;
-using MadeUpStats.Web.Models.Home;
+using MadeUpStats.Web.Models;
+using MadeUpStats.Web.Services;
 
 namespace MadeUpStats.Web.Controllers
 {
@@ -8,29 +10,32 @@ namespace MadeUpStats.Web.Controllers
     public class HomeController : BaseController
     {
         private readonly IStatService statService;
+        private readonly IMapper mapper;
 
-        public HomeController(IStatService statService, IUserInterfaceManager userInterfaceManager) : base(userInterfaceManager)
+        public HomeController(IStatService statService, IMapper mapper, IUserInterfaceManager userInterfaceManager) : base(userInterfaceManager)
         {
             this.statService = statService;
+            this.mapper = mapper;
         }
 
         public ActionResult Index()
         {
-            var model = new IndexViewModel();
-            model.FeaturedStats = statService.GetMostRecentStats(5);
+            var stats = statService.GetMostRecentStats(5);
+
+            var model = new HomeIndexDisplay();
+            model.FeaturedStats = mapper.Map<Stat, StatDisplay>(stats);
+
             return View(model);
         }
 
         public ActionResult About()
         {
-            var model = new AboutViewModel();
-            return View(model);
+            return View();
         }
 
         public ActionResult Information()
         {
-            var model = new InformationViewModel();
-            return View(model);
+            return View();
         }
     }
 }
