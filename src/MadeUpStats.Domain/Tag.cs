@@ -10,6 +10,7 @@ namespace MadeUpStats.Domain
         {
             Validate.NotNull(name, "name");
             Validate.NotEmpty(name, "name");
+            Validate.Keyable(name, "name");
 
             this.name = name;
         }

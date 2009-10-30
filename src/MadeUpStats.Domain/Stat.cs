@@ -68,5 +68,11 @@ namespace MadeUpStats.Domain
 
             tags.Add(tag);
         }
+
+        public Stat SetKey(string key)
+        {
+            this.key = key;
+            return this;
+        }
     }
 }

@@ -12,7 +12,7 @@
     
 	<ul if="model.FeaturedStats.Any()">
 	<for each="var stat in model.FeaturedStats">
-		<li>${Html.ActionLink<StatController>(x => x.Index(stat.Id), stat.Description)}, ${Html.NiceDate(stat.CreateDate)}</li>
+		<li>${Html.ActionLink<StatController>(x => x.Index(stat.Key), stat.Description)}, ${Html.NiceDate(stat.CreateDate)}</li>
 	</for>
 	</ul>
 </content>

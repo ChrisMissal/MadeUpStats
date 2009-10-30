@@ -9,11 +9,6 @@ namespace MadeUpStats.Services
 {
     public class TagService : ITagService
     {
-        private readonly List<Func<string, string>> stringFuncs = new List<Func<string, string>>();
-        private static readonly Func<string, string> removeLeadingAndTrailingSpaces = value => value.Trim();
-        private static readonly Func<string, string> stripInvalidCharacters = value => Regex.Replace(value, @"[^a-zA-Z0-9\-]", string.Empty);
-        private static readonly Func<string, string> replaceCharactersWithHyphens = value => Regex.Replace(value, @" ", "-");
-
         private readonly Regex tagsRegex = new Regex(@"(?:,|^)(""[^""]*""|[^,]*)", RegexOptions.IgnorePatternWhitespace);
 
         private readonly ITagRepository tagRepository;
@@ -21,9 +16,6 @@ namespace MadeUpStats.Services
         public TagService(ITagRepository tagRepository)
         {
             this.tagRepository = tagRepository;
-            stringFuncs.Add(removeLeadingAndTrailingSpaces);
-            stringFuncs.Add(replaceCharactersWithHyphens);
-            stringFuncs.Add(stripInvalidCharacters);
         }
 
         public IEnumerable<Tag> CreateTags(string multiTagString)
@@ -40,7 +32,7 @@ namespace MadeUpStats.Services
                 var value = m.Groups[1].Value;
                 if(value.IsNullOrEmpty())
                     continue;
-                stringFuncs.ForEach(func => { value = func(value); });
+                value = Keyable.CreateKey(value);
                 var tag = new Tag(value);
                 tagRepository.SaveOrUpdate(tag);
                 yield return tag;

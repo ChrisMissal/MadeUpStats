@@ -63,7 +63,7 @@ namespace MadeUpStats.Web.Controllers
                 }
                 statService.Update(stat);
 
-                return RedirectToAction("Index", new { id = stat.Id });
+                return RedirectToAction("Index", new { key = stat.Key });
             }
             catch (Exception ex)
             {

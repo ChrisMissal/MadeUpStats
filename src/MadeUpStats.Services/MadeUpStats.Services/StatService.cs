@@ -21,6 +21,8 @@ namespace MadeUpStats.Services
             Validate.NotEmpty(description, "description");
 
             var stat = new Stat(title, description, author, DateTime.Now);
+            var key = Keyable.CreateKey(title); 
+            stat.SetKey(key);
             statRepository.SaveOrUpdate(stat);
             return stat;
         }

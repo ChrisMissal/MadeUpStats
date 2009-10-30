@@ -6,5 +6,8 @@
 </content>
 
 <content name="body">
+    <h1>${model.Title}</h1>
+    <p>${model.Description}</p>
     <p>${model.StatText}</p>
+    <p>${Html.NiceDate(model.CreateDate)}</p>
 </content>

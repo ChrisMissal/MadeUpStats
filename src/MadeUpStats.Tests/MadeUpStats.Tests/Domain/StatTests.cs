@@ -11,7 +11,7 @@ namespace MadeUpStats.Tests.Domain
         [Fact]
         public void Stat_can_have_a_tag_assigned_to_it()
         {
-            var tag = new Tag("Tag");
+            var tag = new Tag("tag");
             var stat = new Stat(null, null, null, DateTime.Now);
 
             stat.AddTag(tag);
@@ -21,9 +21,9 @@ namespace MadeUpStats.Tests.Domain
         [Fact]
         public void Stat_can_have_many_tags_assigned_to_it()
         {
-            var tag1 = new Tag("Tag1");
-            var tag2 = new Tag("Tag2");
-            var tag3 = new Tag("Tag3");
+            var tag1 = new Tag("tag1");
+            var tag2 = new Tag("tag2");
+            var tag3 = new Tag("tag3");
             var stat = new Stat(null, null, null, DateTime.Now);
 
             stat.AddTag(tag1);
@@ -35,7 +35,7 @@ namespace MadeUpStats.Tests.Domain
         [Fact]
         public void Stat_cannot_have_the_same_tag_assigned_to_it_twice()
         {
-            var tag = new Tag("Tag");
+            var tag = new Tag("tag");
             var stat = new Stat(null, null, null, DateTime.Now);
 
             stat.AddTag(tag);

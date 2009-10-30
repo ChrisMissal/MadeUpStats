@@ -9,8 +9,8 @@ namespace MadeUpStats.Tests.Domain
         [Fact]
         public void Tags_with_same_name_should_be_equal()
         {
-            var firstTag = new Tag("Tag");
-            var secondTag = new Tag("Tag");
+            var firstTag = new Tag("tag");
+            var secondTag = new Tag("tag");
 
             Assert.Equal(firstTag, secondTag);
         }
@@ -31,6 +31,19 @@ namespace MadeUpStats.Tests.Domain
         public void Tag_should_never_equal_null()
         {
             Assert.False(new Tag("chris").Equals(null));
+        }
+
+        [Fact]
+        public void Tag_Key_should_be_the_same_as_the_Tag_Name()
+        {
+            var tag = new Tag("name");
+            tag.Name.ShouldEqual(tag.Key);
+        }
+
+        [Fact]
+        public void Tag_creation_should_throw_error_if_name_is_not_Keyable()
+        {
+            Assert.Throws<ArgumentException>(() => new Tag("T"));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MadeUpStats.Tests.Services
 {
     public class TagServiceTests
     {
-        private const string PLAIN_TAG_NAME = "Chris";
+        private const string PLAIN_TAG_NAME = "chris";
 
         protected Mock<ITagRepository> tagRepository;
 
@@ -37,9 +37,9 @@ namespace MadeUpStats.Tests.Services
         {
             var service = GetService();
 
-            service.CreateTags("Chris!").First().Name.ShouldEqual("Chris");
+            service.CreateTags("Chris!").First().Name.ShouldEqual("chris");
             service.CreateTags("!@#$%^&*()t~`a_+}{\":<>?\\][=g").First().Name.ShouldEqual("tag");
-            service.CreateTags("Don't repeat yourself!").First().Name.ShouldEqual("Dont-repeat-yourself");
+            service.CreateTags("Don't repeat yourself!").First().Name.ShouldEqual("dont-repeat-yourself");
         }
 
         [Fact]

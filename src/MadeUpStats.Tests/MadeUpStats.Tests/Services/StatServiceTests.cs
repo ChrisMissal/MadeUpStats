@@ -14,6 +14,17 @@ namespace MadeUpStats.Tests.Services
         private Mock<IStatRepository> statRepository;
 
         [Fact]
+        public void StatService_should_be_able_to_create_a_Key_by_a_Title()
+        {
+            const string title = "This is my Title";
+            var service = GetService();
+
+            var stat = service.CreateStat(new Author("name"), title, "description");
+
+            stat.Key.ShouldEqual("this-is-my-title");
+        }
+
+        [Fact]
         public void StatService_should_know_if_StatRepository_contains_a_Stat_with_Key()
         {
             const string key = "key";

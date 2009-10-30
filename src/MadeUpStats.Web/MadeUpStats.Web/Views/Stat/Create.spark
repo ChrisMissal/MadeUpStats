@@ -10,7 +10,7 @@
 
 <content name="body">
 	<var model="ViewData.Model as StatInput" />
-	<form action="/Stat/Create" method="post">
+	<form action="/create-stat" method="post">
 		<fieldset>
 			<legend>Create a New Stat</legend>
 			<input type="text" name="Author" value="${model.Author}" />
