@@ -18,6 +18,18 @@ namespace MadeUpStats.Tests.Web.Controllers
         protected Mock<IAuthorService> authorService;
 
         [Fact]
+        public void StatController_should_AddErrorMessage_if_attempt_to_Create_stat_with_duplicate_key()
+        {
+            const string key = "existing-key";
+            var controller = GetController();
+            statService.Setup(x => x.ContainsKey(key)).Returns(true);
+
+            controller.Create(new StatInput {Key = key});
+
+            userInterfaceManager.Verify(x => x.AddMessage(It.IsRegex("A stat with a key of 'existing-key' already exists.")));
+        }
+
+        [Fact]
         public void StatController_should_redirect_to_the_HomeController_Index_if_stat_is_null_by_id()
         {
             var controller = GetController();

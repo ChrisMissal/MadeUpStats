@@ -52,7 +52,7 @@ namespace MadeUpStats.Web.Controllers
                 var author = authorService.GetAuthor(statInput.Author);
 
                 if (statService.ContainsKey(statInput.Key))
-                    throw new InvalidOperationException("A stat with a key of {0} already exists.".FormatWith(statInput.Key));
+                    throw new InvalidOperationException("A stat with a key of '{0}' already exists.".FormatWith(statInput.Key));
 
                 var stat = statService.CreateStat(author, statInput.Title, statInput.Description);
 
