@@ -31,7 +31,7 @@ namespace MadeUpStats.Tests.Web.Routing
             "~/about".ShouldMapTo<HomeController>(x => x.About());
             "~/create-stat".ShouldMapTo<StatController>(x => x.Create());
             "~/12345".ShouldMapTo<StatController>(x => x.Index(12345));
-            "~/all-tags".ShouldMapTo<TagsController>(x => x.Index());
+            "~/all-tags".ShouldMapTo<TagsController>(x => x.AllTags());
             "~/tags/people".ShouldMapTo<TagsController>(x => x.Index("people"));
         }
     }

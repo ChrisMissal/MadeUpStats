@@ -22,7 +22,7 @@ namespace MadeUpStats.Web.Controllers
         {
             var stats = statService.GetMostRecentStats(5);
 
-            var model = new HomeIndexDisplay();
+            var model = new HomeDisplay();
             model.FeaturedStats = mapper.Map<Stat, StatDisplay>(stats);
 
             return View(model);

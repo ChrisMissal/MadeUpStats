@@ -5,6 +5,6 @@
 	<ul>
 		<li>${Html.ActionLink<HomeController>(x => x.Index(), "Home")}</li>
 		<li>${Html.ActionLink<StatController>(x => x.Create(), "Create Stat")}</li>
-		<li>${Html.ActionLink<TagsController>(x => x.Index(), "Browse Stats by Tag")}</li>
+		<li>${Html.ActionLink<TagsController>(x => x.AllTags(), "Browse Stats by Tag")}</li>
 	</ul>
 </div>

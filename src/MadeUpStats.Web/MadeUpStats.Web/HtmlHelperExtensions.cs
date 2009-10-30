@@ -14,7 +14,7 @@ namespace MadeUpStats.Web
 
         public static string CssUrl(this HtmlHelper @this, string location)
         {
-            return "/Content/css/{0}?_={1}".FormatWith(location, DateTime.Now.Ticks);
+            return "/content/css/{0}?_={1}".FormatWith(location, DateTime.Now.Ticks);
         }
     }
 }

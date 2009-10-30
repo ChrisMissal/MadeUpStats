@@ -1,16 +1,23 @@
-using MadeUpStats.Web.Services;
+using fss = System.Func<string, string>;
 
 namespace MadeUpStats.Web.Models
 {
     public abstract class DisplayBase
     {
-        private static readonly StringSplitter splitter = new StringSplitter();
-
+        private readonly fss[] typeNameFunctions = new fss[]
+        {
+            x => x.Replace("Display", string.Empty),
+            x => x.Replace("Input", string.Empty),
+            x => x.ToLowerInvariant()
+        };
+        
         public virtual string GetViewName()
         {
-            var type = GetType().Name.Replace("Display", string.Empty);
-            var strings = splitter.SplitCamelCasing(type);
-            return (strings.Length > 1) ? strings[1] : type;
+            var typeName = GetType().Name;
+            foreach (var func in typeNameFunctions)
+                typeName = func(typeName);
+
+            return typeName;
         }
     }
 }

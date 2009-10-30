@@ -35,7 +35,7 @@ namespace MadeUpStats.Web.Routing
                     .ToDefaultAction<TagsController>(x => x.Index(null))
                     .AddWithName("tags-tagName", routes);
             MvcRoute.MappUrl("all-tags")
-                    .ToDefaultAction<TagsController>(x => x.Index())
+                    .ToDefaultAction<TagsController>(x => x.AllTags())
                     .AddWithName("all-tags", routes);
 
             MvcRoute.MappUrl("create-stat")

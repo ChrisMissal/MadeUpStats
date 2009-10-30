@@ -1,7 +1,7 @@
 ﻿<use master="Application"/>
 
 <content name="head">
-	<title>Made Up Stats, Useless Information and Just Plain Lies!</title>
+	<title>Made Up Stats | Create a Stat</title>
 </content>
 
 <content name="pageHeader">
@@ -9,14 +9,15 @@
 </content>
 
 <content name="body">
-	<var model="ViewData.Model as MadeUpStats.Web.Models.Stat.CreateViewModel" />
-	<form action="/Stat/Create" method="post">
+	<var model="ViewData.Model as StatInput" />
+	<!--<form action="/Stat/Create" method="post">
 		<fieldset>
 			<legend>Create a New Stat</legend>
-			<input type="text" name="Author" value="${model.CreateData.Author}" />
-			<textarea name="Description" rows="4" cols="50">${model.CreateData.Description}</textarea>
-			<input type="text" name="TagString" value="${model.CreateData.TagString}" />
+			<input type="text" name="Author" value="${model.Author}" />
+			<textarea name="Description" rows="4" cols="50">${model.Description}</textarea>
+			<input type="text" name="TagString" value="${model.TagString}" />
 			<input type="submit" value="Create My Stat" />
 		</fieldset>
-	</form>
+	</form>-->
+	${Html.InputForm()}
 </content>

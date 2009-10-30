@@ -100,12 +100,13 @@
     <Compile Include="Models\InputBase.cs" />
     <Compile Include="Models\AboutDisplay.cs" />
     <Compile Include="Models\ErrorIndexDisplay.cs" />
-    <Compile Include="Models\HomeIndexDisplay.cs" />
+    <Compile Include="Models\HomeDisplay.cs" />
     <Compile Include="Models\HomeInformationDisplay.cs" />
     <Compile Include="Models\StatDisplay.cs" />
     <Compile Include="Models\StatInput.cs" />
-    <Compile Include="Models\TagDisplay.cs" />
+    <Compile Include="Models\AllTagsDisplay.cs" />
     <Compile Include="Models\DisplayBase.cs" />
+    <Compile Include="Models\TagDisplay.cs" />
     <Compile Include="RebindTempDataAttribute.cs" />
     <Compile Include="Routing\IRouteConfigurator.cs" />
     <Compile Include="Routing\RouteConfigurator.cs" />
@@ -118,6 +119,8 @@
     <Compile Include="UserInterfaceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMapControllerFactory.cs" />
+    <Compile Include="Views\MadeUpStatsViewPage.cs">
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
@@ -126,15 +129,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.min.js" />
     <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
-    <None Include="Views\Home\Information.spark" />
-    <None Include="Views\Home\Index.spark" />
-    <None Include="Views\Layouts\Application.spark" />
+    <None Include="Views\Home\information.spark" />
+    <None Include="Views\Home\home.spark" />
+    <None Include="Views\Layouts\application.spark" />
+    <None Include="Views\Shared\_global.spark" />
     <None Include="Views\Shared\MessageList.spark" />
-    <None Include="Views\Shared\_Footer.spark" />
-    <None Include="Views\Shared\_Header.spark" />
-    <None Include="Views\Shared\_Sidebar.spark" />
-    <None Include="Views\Stat\Create.spark" />
-    <None Include="Views\Stat\Index.spark" />
+    <None Include="Views\Shared\_footer.spark" />
+    <None Include="Views\Shared\_header.spark" />
+    <None Include="Views\Shared\_sidebar.spark" />
+    <None Include="Views\Stat\create.spark" />
+    <None Include="Views\Stat\index.spark" />
+    <None Include="Views\Tags\alltags.spark" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

@@ -1,0 +1,15 @@
+<use master="Application"/>
+
+<content name="head">
+	<title>Made Up Stats | All Tags on Stats</title>
+</content>
+
+<content name="body">
+	<var model="ViewData.Model as MadeUpStats.Web.Models.AllTagsDisplay" />
+
+	<ul if="model.Tags.Any()">
+	<for each="var tag in model.Tags">
+		<li>${Html.ActionLink<TagsController>(x => x.Index(tag.Name), tag.Name)}</li>
+	</for>
+	</ul>
+</content>

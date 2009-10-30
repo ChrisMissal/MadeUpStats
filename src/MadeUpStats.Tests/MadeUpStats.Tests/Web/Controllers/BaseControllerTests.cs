@@ -7,14 +7,25 @@ namespace MadeUpStats.Tests.Web.Controllers
     public class BaseControllerTests
     {
         [Fact]
-        public void BaseController_should_return_a_View_name_by_ViewModel_type_name_minus_ViewModel()
+        public void BaseController_should_return_a_View_name_by_type_name_minus_Display()
         {
             var fakeModel = new FakeDisplay();
             var baseController = new FakeBaseController();
 
             var view = baseController.View(fakeModel);
 
-            view.ViewName.ShouldEqual("Fake");
+            view.ViewName.ShouldEqual("fake");
+        }
+
+        [Fact]
+        public void BaseController_should_return_a_View_name_by_type_name_minus_Input()
+        {
+            var fakeModel = new SuperFakeInput();
+            var baseController = new FakeBaseController();
+
+            var view = baseController.View(fakeModel);
+
+            view.ViewName.ShouldEqual("superfake");
         }
 
         [Fact]

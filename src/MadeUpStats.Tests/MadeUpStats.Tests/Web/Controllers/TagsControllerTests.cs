@@ -1,7 +1,9 @@
+using System.Web.Mvc;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
+using MadeUpStats.Web.Models;
 using Moq;
 using Xunit;
 
@@ -17,7 +19,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         {
             var controller = GetController();
 
-            controller.Index();
+            controller.AllTags();
 
             tagService.Verify(x => x.GetTags(It.IsAny<int>()), Times.Once());
         }
@@ -30,6 +32,26 @@ namespace MadeUpStats.Tests.Web.Controllers
             controller.Index("chris");
 
             statService.Verify(x => x.GetStatsByTag(It.IsAny<Tag>()), Times.Once());
+        }
+
+        [Fact]
+        public void TagsController_should_return_a_model_of_AllTagsDisplay_for_AllTags()
+        {
+            var controller = GetController();
+
+            var result = controller.AllTags() as ViewResult;
+
+            result.ViewData.Model.ShouldBeOfType<AllTagsDisplay>();
+        }
+
+        [Fact]
+        public void TagsController_should_return_a_model_of_TagDisplay_for_Index()
+        {
+            var controller = GetController();
+
+            var result = controller.Index("tag-name") as ViewResult;
+
+            result.ViewData.Model.ShouldBeOfType<TagDisplay>();
         }
 
         public override TagsController GetController()

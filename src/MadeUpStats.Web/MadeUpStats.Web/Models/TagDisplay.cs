@@ -1,13 +1,12 @@
 using System.Collections.Generic;
+using MadeUpStats.Domain;
 
-namespace MadeUpStats.Web.Models.Tag
+namespace MadeUpStats.Web.Models
 {
     public class TagDisplay : DisplayBase
     {
-        public virtual IEnumerable<Domain.Tag> Tags { get; set; }
+        public virtual string Name { get; set; }
 
-        public virtual string TagName { get; set; }
-
-        public virtual IEnumerable<Domain.Stat> Stats { get; set; }
+        public IEnumerable<Stat> Stats { get; set; }
     }
 }

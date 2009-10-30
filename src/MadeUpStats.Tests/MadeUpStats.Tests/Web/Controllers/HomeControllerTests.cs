@@ -15,11 +15,11 @@ namespace MadeUpStats.Tests.Web.Controllers
         protected Mock<IMapper> mapper;
 
         [Fact]
-        public void HomeController_should_return_a_HomeIndexViewModel_for_Index()
+        public void HomeController_should_return_a_HomeDisplay_for_Index()
         {
             var controller = GetController();
             var view = controller.Index() as ViewResult;
-            view.ViewData.Model.ShouldBeOfType<HomeIndexDisplay>();
+            view.ViewData.Model.ShouldBeOfType<HomeDisplay>();
         }
 
         [Fact]

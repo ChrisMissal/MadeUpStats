@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using MadeUpStats.Domain;
 
 namespace MadeUpStats.Data
@@ -26,8 +25,6 @@ namespace MadeUpStats.Data
                 return;
             }
 
-            // Look how awful this is! Good thing it's only a test class :)
-            Thread.Sleep(50);
             var id = ++statId;
             stats.Add(id, entity);
         }

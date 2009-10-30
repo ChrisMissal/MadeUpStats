@@ -8,9 +8,9 @@
     <p>The site that exists so that you can astound and amaze your friends with stuff that they 
 		didn't know. The obvious reason they don't know these things is because they're made 
 		up and just for fun.</p>
-	<var model="ViewData.Model as MadeUpStats.Web.Models.HomeIndexDisplay" />
-
-	<ul if="model.FeaturedStats.Count() ]] 1">
+	<var model="ViewData.Model as MadeUpStats.Web.Models.HomeDisplay" />
+    
+	<ul if="model.FeaturedStats.Any()">
 	<for each="var stat in model.FeaturedStats">
 		<li>${Html.ActionLink<StatController>(x => x.Index(stat.Id), stat.Description)}, ${Html.NiceDate(stat.CreateDate)}</li>
 	</for>

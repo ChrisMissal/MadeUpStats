@@ -8,7 +8,6 @@ namespace MadeUpStats.Tests.Web
 {
     public class BootstrapperTests
     {
-        [Fact]
         public void see_what_bootstrapper_has()
         {
             var contents = Bootstrapper.Container.WhatDoIHave();
