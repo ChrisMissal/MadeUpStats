@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using MadeUpStats.Web.Models;
 using MadeUpStats.Web.Routing;
 using MadeUpStats.Web.Views;
 using Spark;
@@ -29,7 +28,7 @@ namespace MadeUpStats.Web
                     .SetDebug(true)
                     .SetPageBaseType(typeof(MadeUpStatsViewPage))
                     .AddAssembly(GetType().Assembly)
-                    .AddNamespace(typeof(HomeDisplay).Assembly.FullName)
+                    .AddNamespace("MadeUpStats.Web.Models")
                     .AddNamespace("Microsoft.Web.Mvc")
                     .AddNamespace("MvcContrib")
                     .AddNamespace("System")

@@ -140,7 +140,6 @@
     <None Include="Views\Stat\create.spark" />
     <None Include="Views\Stat\index.spark" />
     <None Include="Views\Tags\alltags.spark" />
-    <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>

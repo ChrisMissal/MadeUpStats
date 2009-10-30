@@ -1,12 +1,10 @@
 ﻿<use master="Application"/>
 
+<var model="ViewData.Model as StatDisplay" />
 <content name="head">
-	<title>Made Up Stats, Useless Information and Just Plain Lies!</title>
+	<title>${model.Title} | Made Up Stats</title>
 </content>
 
 <content name="body">
-    <p>
-		<var model="ViewData.Model as MadeUpStats.Web.Models.Stat.IndexViewModel" />
-		${model.StatText}
-    </p>
+    <p>${model.StatText}</p>
 </content>

@@ -10,7 +10,7 @@
 
 <content name="body">
 	<var model="ViewData.Model as StatInput" />
-	<!--<form action="/Stat/Create" method="post">
+	<form action="/Stat/Create" method="post">
 		<fieldset>
 			<legend>Create a New Stat</legend>
 			<input type="text" name="Author" value="${model.Author}" />
@@ -18,6 +18,5 @@
 			<input type="text" name="TagString" value="${model.TagString}" />
 			<input type="submit" value="Create My Stat" />
 		</fieldset>
-	</form>-->
-	${Html.InputForm()}
+	</form>
 </content>

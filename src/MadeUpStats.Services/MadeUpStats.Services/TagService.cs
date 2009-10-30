@@ -10,6 +10,7 @@ namespace MadeUpStats.Services
     public class TagService : ITagService
     {
         private readonly List<Func<string, string>> stringFuncs = new List<Func<string, string>>();
+        private static readonly Func<string, string> removeLeadingAndTrailingSpaces = value => value.Trim();
         private static readonly Func<string, string> stripInvalidCharacters = value => Regex.Replace(value, @"[^a-zA-Z0-9\-]", string.Empty);
         private static readonly Func<string, string> replaceCharactersWithHyphens = value => Regex.Replace(value, @" ", "-");
 
@@ -20,6 +21,7 @@ namespace MadeUpStats.Services
         public TagService(ITagRepository tagRepository)
         {
             this.tagRepository = tagRepository;
+            stringFuncs.Add(removeLeadingAndTrailingSpaces);
             stringFuncs.Add(replaceCharactersWithHyphens);
             stringFuncs.Add(stripInvalidCharacters);
         }

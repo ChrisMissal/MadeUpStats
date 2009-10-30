@@ -68,6 +68,26 @@ namespace MadeUpStats.Tests.Services
             Assert.Equal(tagString, tag.Name);
         }
 
+        [Fact]
+        public void TagService_should_not_create_a_tag_starting_with_a_space()
+        {
+            const string tagString = " dog";
+
+            var tag = GetService().CreateTags(tagString).First();
+
+            tag.Name.ShouldEqual("dog");
+        }
+
+        [Fact]
+        public void TagService_should_not_create_a_tag_ending_with_a_space()
+        {
+            const string tagString = "cat ";
+
+            var tag = GetService().CreateTags(tagString).First();
+
+            tag.Name.ShouldEqual("cat");
+        }
+
         #endregion
 
         #region Behavior tests
