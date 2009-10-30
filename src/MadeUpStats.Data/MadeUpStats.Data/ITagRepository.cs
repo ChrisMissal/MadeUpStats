@@ -3,7 +3,7 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Data
 {
-    public interface ITagRepository : IRepository<Tag, long>
+    public interface ITagRepository : IRepository<Tag, string>
     {
         IEnumerable<Tag> GetMostPopularTags(int count);
 

@@ -30,9 +30,9 @@ namespace MadeUpStats.Services
             Array.ForEach(tags, stat.AddTag);
         }
 
-        public Stat GetStat(long id)
+        public Stat GetStat(string key)
         {
-            return statRepository.GetById(id);
+            return statRepository.GetByKey(key);
         }
 
         public IEnumerable<Stat> GetMostRecentStats(int count)
@@ -48,6 +48,12 @@ namespace MadeUpStats.Services
         public IEnumerable<Stat> GetStatsByTag(Tag tag)
         {
             throw new NotImplementedException();
+        }
+
+        public bool ContainsKey(string key)
+        {
+            var stat = statRepository.GetByKey(key);
+            return stat.Exists();
         }
     }
 }

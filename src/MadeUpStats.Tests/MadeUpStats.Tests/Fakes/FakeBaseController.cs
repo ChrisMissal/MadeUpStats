@@ -1,6 +1,5 @@
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
-using MadeUpStats.Web.Models;
 using Moq;
 
 namespace MadeUpStats.Tests.Fakes

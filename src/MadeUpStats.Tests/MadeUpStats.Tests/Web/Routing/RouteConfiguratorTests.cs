@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Routing;
@@ -30,7 +31,7 @@ namespace MadeUpStats.Tests.Web.Routing
             "~/information".ShouldMapTo<HomeController>(x => x.Information());
             "~/about".ShouldMapTo<HomeController>(x => x.About());
             "~/create-stat".ShouldMapTo<StatController>(x => x.Create());
-            "~/12345".ShouldMapTo<StatController>(x => x.Index(12345));
+            "~/stat/some-stat-key".ShouldMapTo<StatController>(x => x.Index("some-stat-key"));
             "~/all-tags".ShouldMapTo<TagsController>(x => x.AllTags());
             "~/tags/people".ShouldMapTo<TagsController>(x => x.Index("people"));
         }

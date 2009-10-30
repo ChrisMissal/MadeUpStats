@@ -21,9 +21,9 @@ namespace MadeUpStats.Web.Controllers
             this.tagService = tagService;
         }
 
-        public ActionResult Index(long id)
+        public ActionResult Index(string key)
         {
-            var stat = statService.GetStat(id);
+            var stat = statService.GetStat(key);
             if (stat == null)
                 return RedirectToAction("Index", "Home");
 
@@ -50,6 +50,10 @@ namespace MadeUpStats.Web.Controllers
                 Validate.NotNull(statInput, "Stat data");
 
                 var author = authorService.GetAuthor(statInput.Author);
+
+                if (statService.ContainsKey(statInput.Key))
+                    throw new InvalidOperationException("A stat with a key of {0} already exists.".FormatWith(statInput.Key));
+
                 var stat = statService.CreateStat(author, statInput.Title, statInput.Description);
 
                 if(!statInput.TagString.IsNullOrEmpty())

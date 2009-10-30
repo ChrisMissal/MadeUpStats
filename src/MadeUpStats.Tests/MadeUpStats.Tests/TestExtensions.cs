@@ -25,6 +25,16 @@ namespace MadeUpStats.Tests
             Assert.Equal(expectedValue, @this);
         }
 
+        public static void ShouldBeTrue(this bool @this)
+        {
+            Assert.True(@this);
+        }
+
+        public static void ShouldBeFalse(this bool @this)
+        {
+            Assert.False(@this);
+        }
+
         public static void ShouldBeOfType<T>(this object @this)
         {
             Assert.IsType(typeof (T), @this);

@@ -2,7 +2,7 @@ using MadeUpStats.Framework;
 
 namespace MadeUpStats.Domain
 {
-    public class Tag
+    public class Tag : IKeyable<string>
     {
         private readonly string name;
 
@@ -26,6 +26,11 @@ namespace MadeUpStats.Domain
                 return false;
 
             return name.Equals(other.name) || base.Equals(obj);
+        }
+
+        public string Key
+        {
+            get { return name; }
         }
     }
 }

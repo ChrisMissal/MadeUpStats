@@ -3,6 +3,7 @@ using System.Linq;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
+using MadeUpStats.Tests.Fakes;
 using Moq;
 using Xunit;
 
@@ -10,44 +11,63 @@ namespace MadeUpStats.Tests.Services
 {
     public class StatServiceTests
     {
+        private Mock<IStatRepository> statRepository;
+
+        [Fact]
+        public void StatService_should_know_if_StatRepository_contains_a_Stat_with_Key()
+        {
+            const string key = "key";
+            var service = GetService();
+            statRepository.Setup(x => x.GetByKey(key)).Returns(FakeStat.NewInstance);
+
+            service.ContainsKey(key).ShouldBeTrue();
+        }
+
+        [Fact]
+        public void StatService_should_know_if_StatRepository_doesnt_contain_a_Stat_with_Key()
+        {
+            const string key = "abc";
+            var service = GetService();
+            statRepository.Setup(x => x.GetByKey(key)).Returns(default(Stat));
+
+            service.ContainsKey(key).ShouldBeFalse();
+        }
+
         [Fact]
         public void StatService_should_call_StatRepository_for_GetStatText()
         {
-            const long id = 1;
-            var statRepository = new Mock<IStatRepository>();
+            const string id = "key";
 
-            new StatService(statRepository.Object).GetStat(id);
+            GetService().GetStat(id);
 
-            statRepository.Verify(x => x.GetById(id), Times.Once(), "StatRepository was not called once.");
+            statRepository.Verify(x => x.GetByKey(id), Times.Once(), "StatRepository was not called once.");
         }
 
         [Fact]
         public void StatService_should_be_able_to_create_a_Stat()
         {
-            var statRepository = new Mock<IStatRepository>();
             var testStartTime = DateTime.Now;
             var author = new Author("Chris");
             const string description = "25% of cars go over 100mph.";
 
-            var service = new StatService(statRepository.Object);
-            var stat = service.CreateStat(author, "25% of", description);
+            var stat = GetService().CreateStat(author, "25% of", description);
 
-            Assert.NotNull(stat);
-            Assert.Equal("Chris", stat.Author.Name);
-            Assert.Equal("25% of cars go over 100mph.", stat.Description);
+            stat.ShouldNotBeNull();
+            stat.Author.Name.ShouldEqual("Chris");
+            stat.Description.ShouldEqual("25% of cars go over 100mph.");
             Assert.True(stat.CreateDate >= testStartTime);
         }
 
         [Fact]
         public void StatService_should_not_create_a_Stat_with_a_blank_description()
         {
-            Assert.Throws<ArgumentException>(() => new StatService(null).CreateStat(null, null, string.Empty));
+            Assert.Throws<ArgumentException>(() => GetService().CreateStat(null, null, string.Empty));
         }
 
         [Fact]
         public void StatService_should_not_create_a_Stat_with_a_null_description()
         {
-            Assert.Throws<ArgumentNullException>(() => new StatService(null).CreateStat(null, null, null));
+            Assert.Throws<ArgumentNullException>(() => GetService().CreateStat(null, null, null));
         }
 
         [Fact]
@@ -56,18 +76,18 @@ namespace MadeUpStats.Tests.Services
             var tags = new[] {new Tag("one"), new Tag("two"), new Tag("three")};
             var stat = new Stat(null, null, null, DateTime.Now);
 
-            Assert.Equal(0, stat.Tags.Count());
+            stat.Tags.Count().ShouldEqual(0);
 
-            new StatService(null).TagStat(stat, tags);
+            GetService().TagStat(stat, tags);
 
-            Assert.Equal(3, stat.Tags.Count());
+            stat.Tags.Count().ShouldEqual(3);
         }
 
         [Fact]
         public void StatService_should_not_tag_a_stat_with_a_null_tag_array()
         {
             var stat = new Stat(null, null, null, DateTime.Now);
-            Assert.Throws<ArgumentNullException>(() => new StatService(null).TagStat(stat, null));
+            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(stat, null));
         }
 
         [Fact]
@@ -75,7 +95,14 @@ namespace MadeUpStats.Tests.Services
         {
             var stat = new Stat(null, null, null, DateTime.Now);
             var tagArray = new[] {new Tag("name"), null};
-            Assert.Throws<ArgumentNullException>(() => new StatService(null).TagStat(stat, tagArray));
+            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(stat, tagArray));
+        }
+
+        private StatService GetService()
+        {
+            statRepository = new Mock<IStatRepository>();
+
+            return new StatService(statRepository.Object);
         }
     }
 }

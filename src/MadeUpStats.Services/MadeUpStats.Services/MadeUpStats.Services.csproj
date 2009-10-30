@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AuthorService.cs" />
     <Compile Include="IAuthorService.cs" />
+    <Compile Include="IKeyableService.cs" />
     <Compile Include="IStatService.cs" />
     <Compile Include="ITagService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

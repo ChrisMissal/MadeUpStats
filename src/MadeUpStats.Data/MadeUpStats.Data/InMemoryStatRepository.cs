@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MadeUpStats.Domain;
@@ -6,16 +7,7 @@ namespace MadeUpStats.Data
 {
     public class InMemoryStatRepository : IStatRepository
     {
-        private long statId;
-        private readonly Dictionary<long, Stat> stats = new Dictionary<long, Stat>();
-
-        public Stat GetById(long id)
-        {
-            if(!stats.ContainsKey(id)) return null;
-
-            var stat = stats[id];
-            return stat;
-        }
+        private readonly Dictionary<Guid, Stat> stats = new Dictionary<Guid, Stat>();
 
         public void SaveOrUpdate(Stat entity)
         {
@@ -25,8 +17,7 @@ namespace MadeUpStats.Data
                 return;
             }
 
-            var id = ++statId;
-            stats.Add(id, entity);
+            stats.Add(entity.Id, entity);
         }
 
         public Stat Delete(Stat entity)
@@ -48,6 +39,11 @@ namespace MadeUpStats.Data
         public IEnumerable<Stat> GetMostRecent(int count)
         {
             return stats.Values.OrderByDescending(x => x.CreateDate).Take(count);
+        }
+
+        public Stat GetByKey(string key)
+        {
+            return stats.Values.FirstOrDefault(x => x.Key == key);
         }
     }
 }

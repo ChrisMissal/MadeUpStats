@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{11C14CF5-1632-4878-9EE3-B7D9772E2399}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -51,6 +51,10 @@
     <ProjectReference Include="..\..\MadeUpStats.Domain\MadeUpStats.Domain.csproj">
       <Project>{05CD5BE0-5A2F-40A3-A367-3C654608427A}</Project>
       <Name>MadeUpStats.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MadeUpStats.Framework\MadeUpStats.Framework\MadeUpStats.Framework.csproj">
+      <Project>{F35F1EC4-B6CE-4267-BD67-CE8ADB1473BF}</Project>
+      <Name>MadeUpStats.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

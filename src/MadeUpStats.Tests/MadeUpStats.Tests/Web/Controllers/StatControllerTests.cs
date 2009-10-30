@@ -21,10 +21,10 @@ namespace MadeUpStats.Tests.Web.Controllers
         public void StatController_should_redirect_to_the_HomeController_Index_if_stat_is_null_by_id()
         {
             var controller = GetController();
-            const long id = 0;
-            statService.Setup(x => x.GetStat(id)).Returns(() => null);
+            const string key = "user";
+            statService.Setup(x => x.GetStat(key)).Returns(() => null);
 
-            var view = controller.Index(id) as RedirectToRouteResult;
+            var view = controller.Index(key) as RedirectToRouteResult;
 
             Assert.IsType(typeof (RedirectToRouteResult), view);
             Assert.Equal("Index", view.RouteValues["action"]);
@@ -35,10 +35,10 @@ namespace MadeUpStats.Tests.Web.Controllers
         public void StatController_should_return_a_ViewResult_with_a_StatViewModel_for_Index()
         {
             var controller = GetController();
-            const long id = 0;
-            statService.Setup(x => x.GetStat(id)).Returns(BlankStat);
+            const string key = "stat-key";
+            statService.Setup(x => x.GetStat(key)).Returns(BlankStat);
 
-            var view = controller.Index(0) as ViewResult;
+            var view = controller.Index(key) as ViewResult;
 
             Assert.IsType(typeof(StatDisplay), view.ViewData.Model);
         }
@@ -48,10 +48,10 @@ namespace MadeUpStats.Tests.Web.Controllers
         {
             var controller = GetController();
             const string expectedStatText = "MVC is fun";
-            const long id = 0;
-            statService.Setup(x => x.GetStat(id)).Returns(new Stat("", expectedStatText, null, DateTime.Now));
+            const string key = "some-key";
+            statService.Setup(x => x.GetStat(key)).Returns(new Stat("", expectedStatText, null, DateTime.Now));
 
-            var view = controller.Index(0) as ViewResult;
+            var view = controller.Index(key) as ViewResult;
             var model = view.ViewData.Model as StatDisplay;
 
             Assert.Equal(expectedStatText, model.StatText);
@@ -71,7 +71,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         public void StatController_should_call_StatService_getStatText_with_the_supplied_id_for_Index()
         {
             var controller = GetController();
-            const long id = 123;
+            const string id = "key";
 
             controller.Index(id);
 

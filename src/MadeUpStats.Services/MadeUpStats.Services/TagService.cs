@@ -64,5 +64,10 @@ namespace MadeUpStats.Services
             var tags = tagRepository.GetTags(count);
             return tags;
         }
+
+        public bool ContainsKey(string key)
+        {
+            return false;
+        }
     }
 }

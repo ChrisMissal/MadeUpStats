@@ -8,6 +8,7 @@ namespace MadeUpStats.Web.Routing
     public class RouteConfigurator : IRouteConfigurator
     {
         private readonly RouteCollection routes;
+        private const string KEY_REGEX_PATTERN = "^[A-Za-z0-9\\-\\.]+$";
 
         public RouteConfigurator()
         {
@@ -31,7 +32,7 @@ namespace MadeUpStats.Web.Routing
                     .AddWithName("about", routes);
 
             MvcRoute.MappUrl("tags/{tagName}")
-                    .WithConstraints(new { tagName = "^[A-Za-z0-9\\-\\.]+$" })
+                    .WithConstraints(new { tagName = KEY_REGEX_PATTERN })
                     .ToDefaultAction<TagsController>(x => x.Index(null))
                     .AddWithName("tags-tagName", routes);
             MvcRoute.MappUrl("all-tags")
@@ -41,10 +42,10 @@ namespace MadeUpStats.Web.Routing
             MvcRoute.MappUrl("create-stat")
                     .ToDefaultAction<StatController>(x => x.Create())
                     .AddWithName("create-stat", routes);
-            MvcRoute.MappUrl("{id}")
-                    .WithConstraints(new { id = "^[0-9]+$" })
-                    .ToDefaultAction<StatController>(x => x.Index(0))
-                    .AddWithName("stat-id", routes);
+            MvcRoute.MappUrl("stat/{key}")
+                    .WithConstraints(new { key = KEY_REGEX_PATTERN })
+                    .ToDefaultAction<StatController>(x => x.Index(""))
+                    .AddWithName("stat-key", routes);
 
             // Default/fallback route
             routes.MapRoute("Default", "{controller}/{action}/{id}",

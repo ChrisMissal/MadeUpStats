@@ -3,7 +3,7 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Services
 {
-    public interface ITagService
+    public interface ITagService : IKeyableService
     {
         IEnumerable<Tag> CreateTags(string multiTagString);
 

@@ -3,13 +3,13 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Services
 {
-    public interface IStatService
+    public interface IStatService : IKeyableService
     {
         Stat CreateStat(Author author, string title, string description);
 
         void TagStat(Stat stat, params Tag[] tags);
 
-        Stat GetStat(long id);
+        Stat GetStat(string key);
 
         IEnumerable<Stat> GetMostRecentStats(int count);
 

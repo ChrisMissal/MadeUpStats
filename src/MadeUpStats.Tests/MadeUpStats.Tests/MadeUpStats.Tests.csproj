@@ -87,6 +87,7 @@
     <Compile Include="Domain\TagTests.cs" />
     <Compile Include="Fakes\FakeBaseController.cs" />
     <Compile Include="Fakes\FakeDisplay.cs" />
+    <Compile Include="Fakes\FakeStat.cs" />
     <Compile Include="Services\AuthorServiceTests.cs" />
     <Compile Include="Services\MadeUpStatsMapperTests.cs" />
     <Compile Include="Services\StatServiceTests.cs" />
