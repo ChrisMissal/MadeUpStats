@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InMemoryUserRepository.cs" />
     <Compile Include="IStatValueRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStatRepository.cs" />
     <Compile Include="ITagRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InMemoryStatRepository.cs" />
     <Compile Include="InMemoryTagRepository.cs" />

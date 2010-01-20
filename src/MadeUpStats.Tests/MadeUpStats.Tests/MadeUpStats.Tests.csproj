@@ -90,6 +90,7 @@
     <Compile Include="Fakes\FakeStat.cs" />
     <Compile Include="Framework\KeyableTests.cs" />
     <Compile Include="Services\AuthorServiceTests.cs" />
+    <Compile Include="Services\HttpUserSessionTests.cs" />
     <Compile Include="Services\MadeUpStatsMapperTests.cs" />
     <Compile Include="Services\StatServiceTests.cs" />
     <Compile Include="Services\TagServiceTests.cs" />
