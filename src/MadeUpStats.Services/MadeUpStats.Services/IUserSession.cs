@@ -4,6 +4,8 @@ namespace MadeUpStats.Services
 {
     public interface IUserSession
     {
+        bool TrySignIn(string userName, string password);
+
         IUser GetUser();
     }
 }

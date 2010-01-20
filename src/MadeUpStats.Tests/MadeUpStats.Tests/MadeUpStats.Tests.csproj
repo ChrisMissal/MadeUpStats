@@ -103,6 +103,7 @@
     <Compile Include="Web\Controllers\MessagesControllerTests.cs" />
     <Compile Include="Web\Controllers\StatControllerTests.cs" />
     <Compile Include="Web\Controllers\TagsControllerTests.cs" />
+    <Compile Include="Web\Controllers\UserControllerTests.cs" />
     <Compile Include="Web\MadeUpStatsConfigurationTests.cs" />
     <Compile Include="Web\MadeUpStatsConventionsTests.cs" />
     <Compile Include="Web\Routing\OutBoundUrlTests.cs" />

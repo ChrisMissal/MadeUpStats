@@ -76,6 +76,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="MadeUpStatsConventions.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Models\ErrorIndexDisplay.cs" />
     <Compile Include="Models\HomeDisplay.cs" />
     <Compile Include="Models\HomeInformationDisplay.cs" />
+    <Compile Include="Models\LoginInput.cs" />
     <Compile Include="Models\StatDisplay.cs" />
     <Compile Include="Models\StatInput.cs" />
     <Compile Include="Models\AllTagsDisplay.cs" />
