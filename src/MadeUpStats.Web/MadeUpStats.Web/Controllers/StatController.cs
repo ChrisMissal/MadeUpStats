@@ -49,7 +49,7 @@ namespace MadeUpStats.Web.Controllers
             {
                 Validate.NotNull(statInput, "Stat data");
 
-                var author = authorService.GetAuthor(statInput.Author);
+                var author = authorService.GetLoggedInAuthor();
 
                 if (statService.ContainsKey(statInput.Key))
                     throw new InvalidOperationException("A stat with a key of '{0}' already exists.".FormatWith(statInput.Key));

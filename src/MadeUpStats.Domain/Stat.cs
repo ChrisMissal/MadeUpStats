@@ -4,29 +4,21 @@ using MadeUpStats.Framework;
 
 namespace MadeUpStats.Domain
 {
-    public class Stat : IKeyable<string>
+    public class Stat : Entity, IKeyable<string>
     {
         private readonly List<Tag> tags = new List<Tag>();
         private readonly string description;
         private readonly Author author;
         private readonly DateTime createDate;
-        private readonly Guid id;
         private readonly string title;
         private string key;
 
         public Stat(string title, string description, Author author, DateTime createDate)
         {
-            id = Guid.NewGuid();
-
             this.description = description;
             this.title = title;
             this.author = author;
             this.createDate = createDate;
-        }
-
-        public virtual Guid Id
-        {
-            get { return id; }
         }
 
         public virtual string Description

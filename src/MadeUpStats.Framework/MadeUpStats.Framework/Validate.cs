@@ -20,6 +20,12 @@ namespace MadeUpStats.Framework
                 throw new ArgumentException(NOT_EMPTY.FormatWith(paramName), paramName);
         }
 
+        public static void NotNullOrEmpty(object obj, string paramName)
+        {
+            NotNull(obj, paramName);
+            NotEmpty(obj, paramName);
+        }
+
         public static void Keyable(string key, string paramName)
         {
             if(!Framework.Keyable.CreateKey(key).Equals(key))

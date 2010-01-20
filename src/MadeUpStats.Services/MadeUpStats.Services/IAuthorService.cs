@@ -4,6 +4,6 @@ namespace MadeUpStats.Services
 {
     public interface IAuthorService
     {
-        Author GetAuthor(string authorName);
+        Author GetLoggedInAuthor();
     }
 }

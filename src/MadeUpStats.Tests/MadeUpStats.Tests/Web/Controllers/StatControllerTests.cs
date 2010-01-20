@@ -95,7 +95,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         {
             GetController().Create(new StatInput());
 
-            authorService.Verify(x => x.GetAuthor(It.IsAny<string>()), Times.Once());
+            authorService.Verify(x => x.GetLoggedInAuthor(), Times.Once());
         }
 
         [Fact]

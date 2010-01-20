@@ -39,6 +39,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorService.cs" />
@@ -46,9 +47,11 @@
     <Compile Include="IKeyableService.cs" />
     <Compile Include="IStatService.cs" />
     <Compile Include="ITagService.cs" />
+    <Compile Include="IUserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatService.cs" />
     <Compile Include="TagService.cs" />
+    <Compile Include="HttpUserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MadeUpStats.Data\MadeUpStats.Data\MadeUpStats.Data.csproj">

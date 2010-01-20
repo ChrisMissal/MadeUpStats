@@ -40,6 +40,10 @@ namespace MadeUpStats.Web
                     .TheDefaultIsConcreteType<AuthorService>()
                     .AsSingletons();
 
+                x.ForRequestedType<IUserSession>()
+                    .TheDefaultIsConcreteType<HttpUserSession>()
+                    .AlwaysUnique();
+
                 x.ForRequestedType<IFeedService>()
                     .TheDefaultIsConcreteType<FeedService>()
                     .AsSingletons();

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using MadeUpStats.Data;
@@ -59,7 +58,8 @@ namespace MadeUpStats.Services
 
         public bool ContainsKey(string key)
         {
-            return false;
+            var tag = tagRepository.GetByKey(key);
+            return tag.Exists();
         }
     }
 }
