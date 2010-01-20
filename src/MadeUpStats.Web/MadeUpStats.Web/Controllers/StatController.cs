@@ -4,7 +4,6 @@ using MadeUpStats.Framework;
 using MadeUpStats.Services;
 using MadeUpStats.Web.Models;
 using MvcContrib;
-using StatInput=MadeUpStats.Web.Models.StatInput;
 
 namespace MadeUpStats.Web.Controllers
 {
@@ -25,7 +24,7 @@ namespace MadeUpStats.Web.Controllers
         {
             var stat = statService.GetStat(key);
             if (stat == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction<HomeController>(x => x.Index());
 
             var model = new StatDisplay();
             model.StatText = stat.Description;
@@ -71,7 +70,7 @@ namespace MadeUpStats.Web.Controllers
                 TempData.Add(statInput);
             }
 
-            return RedirectToAction("Create");
+            return RedirectToAction<StatController>(x => x.Create());
         }
     }
 }

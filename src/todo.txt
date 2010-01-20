@@ -1,0 +1,2 @@
+
+- replace IHttpContextProvider dependency of UserInterfaceManager with IUserSession

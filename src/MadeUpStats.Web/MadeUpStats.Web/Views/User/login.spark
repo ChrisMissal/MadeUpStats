@@ -1,0 +1,33 @@
+<use master="Application"/>
+
+<content name="head">
+	<title>Made Up Stats | Login</title>
+</content>
+
+<content name="pageHeader">
+  <h2>Login</h2>
+</content>
+
+<content name="body">
+	<var model="ViewData.Model as LoginInput" />
+
+  <form method="post">
+    <dl>
+      <dt>
+        <label for="login-input-username"></label>
+      </dt>
+      <dd>
+        <input type="text" name="UserName" id="login-input-username" value="${model.UserName}" />
+      </dd>
+      <dt>
+        <label for="login-input-password"></label>
+      </dt>
+      <dd>
+        <input type="password" name="Password" id="login-input-password" value="" />
+      </dd>
+      <dd>
+        <input type="submit" value="Log Me In" />
+      </dd>
+    </dl>
+  </form>
+</content>

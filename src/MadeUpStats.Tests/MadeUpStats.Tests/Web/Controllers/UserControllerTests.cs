@@ -1,8 +1,10 @@
+using System.Web.Mvc;
 using MadeUpStats.Services;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Models;
 using Moq;
+using MvcContrib.TestHelper;
 using Xunit;
 
 namespace MadeUpStats.Tests.Web.Controllers
@@ -65,6 +67,17 @@ namespace MadeUpStats.Tests.Web.Controllers
             controller.Login(loginInput);
 
             userSession.Verify(x => x.TrySignIn("u", "p"));
+        }
+
+        [Fact]
+        public void Login_that_is_successful_should_go_to_home_page()
+        {
+            var loginInput = new LoginInput {Password = "p", UserName = "u"};
+            var controller = GetController();
+
+            var result = controller.Login(loginInput) as RedirectToRouteResult;
+
+            result.ToAction<HomeController>(x => x.Index());
         }
 
         private UserController GetController()

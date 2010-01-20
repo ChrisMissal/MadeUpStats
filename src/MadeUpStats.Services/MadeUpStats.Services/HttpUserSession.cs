@@ -1,6 +1,7 @@
 using System.Web;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
+using MadeUpStats.Framework;
 
 namespace MadeUpStats.Services
 {
@@ -17,9 +18,9 @@ namespace MadeUpStats.Services
 
         public bool TrySignIn(string userName, string password)
         {
-            userRepository.GetUser(userName);
+            var user = userRepository.GetUser(userName);
 
-            return false;
+            return user.Exists();
         }
 
         public IUser GetUser()

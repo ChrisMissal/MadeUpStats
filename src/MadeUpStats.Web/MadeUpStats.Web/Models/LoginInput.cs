@@ -1,6 +1,6 @@
 namespace MadeUpStats.Web.Models
 {
-    public class LoginInput
+    public class LoginInput : InputBase
     {
         public virtual string UserName { get; set; }
 

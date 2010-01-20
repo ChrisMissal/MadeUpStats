@@ -77,10 +77,11 @@
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Feed.cs" />
-    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="MadeUpStatsConventions.cs" />
-    <Compile Include="ModelStateRebindAttribute.cs" />
+    <Compile Include="Attributes\ModelStateRebindAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -109,7 +110,7 @@
     <Compile Include="Models\AllTagsDisplay.cs" />
     <Compile Include="Models\DisplayBase.cs" />
     <Compile Include="Models\TagDisplay.cs" />
-    <Compile Include="RebindTempDataAttribute.cs" />
+    <Compile Include="Attributes\RebindTempDataAttribute.cs" />
     <Compile Include="Routing\IRouteConfigurator.cs" />
     <Compile Include="Routing\RouteConfigurator.cs" />
     <Compile Include="Services\DateFormatter.cs" />
@@ -143,6 +144,7 @@
     <None Include="Views\Stat\create.spark" />
     <None Include="Views\Stat\stat.spark" />
     <None Include="Views\Tags\alltags.spark" />
+    <None Include="Views\User\login.spark" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>

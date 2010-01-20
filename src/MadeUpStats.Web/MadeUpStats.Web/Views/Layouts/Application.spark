@@ -7,11 +7,11 @@
     <use content="head"/>
   </head>
   <body>
-    <header/>
+    <Header/>
     <use content="pageHeader"/>
 	#Html.RenderAction<MessagesController>(c => c.GetMessages());
     <use content="body"/>
-    <sidebar/>
-    <footer/>
+    <Sidebar/>
+    <Footer/>
   </body>
 </html>

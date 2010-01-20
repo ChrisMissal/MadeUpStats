@@ -60,10 +60,5 @@ namespace MadeUpStats.Tests
         {
             return new TimeSpan(@this, 0, 0, 0);
         }
-
-        public static string RedirectActionName(this RedirectToRouteResult @this)
-        {
-            return @this.RouteValues["action"] as string;
-        }
     }
 }

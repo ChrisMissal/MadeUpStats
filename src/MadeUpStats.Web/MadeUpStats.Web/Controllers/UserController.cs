@@ -15,10 +15,14 @@ namespace MadeUpStats.Web.Controllers
             this.userSession = userSession;
         }
 
-        [AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(LoginInput))]
         public ActionResult Login()
         {
-            return View("Login");
+            var createDataModel = ViewData.Model as LoginInput;
+
+            var model = createDataModel ?? new LoginInput();
+
+            return View(model);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -31,7 +35,7 @@ namespace MadeUpStats.Web.Controllers
 
                 userSession.TrySignIn(loginInput.UserName, loginInput.Password);
 
-                throw new NotImplementedException();
+                return RedirectToAction<HomeController>(x => x.Index());
             }
             catch (Exception ex)
             {

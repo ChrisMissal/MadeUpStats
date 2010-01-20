@@ -1,11 +1,11 @@
 using System.Web.Mvc;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
-using MadeUpStats.Tests;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Models;
 using Moq;
+using MvcContrib.TestHelper;
 using Xunit;
 
 namespace MadeUpStats.Tests.Web.Controllers
@@ -62,7 +62,7 @@ namespace MadeUpStats.Tests.Web.Controllers
 
             var result = controller.Index(null) as RedirectToRouteResult;
 
-            result.RedirectActionName().ShouldEqual("Index");
+            result.ToAction<HomeController>(x => x.Index());
         }
 
         public override TagsController GetController()

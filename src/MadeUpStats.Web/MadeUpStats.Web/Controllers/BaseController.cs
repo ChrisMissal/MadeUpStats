@@ -1,4 +1,7 @@
+using System;
+using System.Linq.Expressions;
 using System.Web.Mvc;
+using MadeUpStats.Web.Extensions;
 using MadeUpStats.Web.Models;
 
 namespace MadeUpStats.Web.Controllers
@@ -20,6 +23,14 @@ namespace MadeUpStats.Web.Controllers
         public virtual ViewResult View(DisplayBase model)
         {
             return View(model.GetViewName(), model);
+        }
+
+        public RedirectToRouteResult RedirectToAction<TController>(Expression<Func<TController, object>> actionExpression)
+        {
+            var controllerName = typeof(TController).GetControllerName();
+            var actionName = actionExpression.GetActionName();
+
+            return RedirectToAction(actionName, controllerName);
         }
     }
 }
