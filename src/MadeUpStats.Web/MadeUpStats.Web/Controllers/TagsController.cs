@@ -1,5 +1,6 @@
 using System.Web.Mvc;
 using MadeUpStats.Domain;
+using MadeUpStats.Framework;
 using MadeUpStats.Services;
 using MadeUpStats.Web.Models;
 
@@ -25,6 +26,9 @@ namespace MadeUpStats.Web.Controllers
 
         public ActionResult Index(string tagName)
         {
+            if (tagName.IsNullOrEmpty())
+                return RedirectToAction("Index", "Home");
+
             var model = new TagDisplay();
             model.Name = tagName;
             model.Stats = statService.GetStatsByTag(new Tag(tagName));

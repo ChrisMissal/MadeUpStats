@@ -1,4 +1,5 @@
 using System;
+using System.Web.Mvc;
 using Xunit;
 
 namespace MadeUpStats.Tests
@@ -58,6 +59,11 @@ namespace MadeUpStats.Tests
         public static TimeSpan DaysAgo(this int @this)
         {
             return new TimeSpan(@this, 0, 0, 0);
+        }
+
+        public static string RedirectActionName(this RedirectToRouteResult @this)
+        {
+            return @this.RouteValues["action"] as string;
         }
     }
 }

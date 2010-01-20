@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
+using MadeUpStats.Tests;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Models;
@@ -52,6 +53,16 @@ namespace MadeUpStats.Tests.Web.Controllers
             var result = controller.Index("tag-name") as ViewResult;
 
             result.ViewData.Model.ShouldBeOfType<TagDisplay>();
+        }
+
+        [Fact]
+        public void Index_with_null_tagName_should_Redirect_to_Home()
+        {
+            var controller = GetController();
+
+            var result = controller.Index(null) as RedirectToRouteResult;
+
+            result.RedirectActionName().ShouldEqual("Index");
         }
 
         public override TagsController GetController()
