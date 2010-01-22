@@ -1,18 +1,20 @@
-using System.Web;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
 using MadeUpStats.Framework;
+using MadeUpStats.Services;
 
-namespace MadeUpStats.Services
+namespace MadeUpStats.Web.Services
 {
     public class HttpUserSession : IUserSession
     {
+        private readonly IHttpContextProvider httpContextProvider;
         private readonly IUserRepository userRepository;
 
         private const string IUSER = "IUSER";
 
-        public HttpUserSession(IUserRepository userRepository)
+        public HttpUserSession(IHttpContextProvider httpContextProvider, IUserRepository userRepository)
         {
+            this.httpContextProvider = httpContextProvider;
             this.userRepository = userRepository;
         }
 
@@ -20,12 +22,14 @@ namespace MadeUpStats.Services
         {
             var user = userRepository.GetUser(userName);
 
+            httpContextProvider.GetHttpSession()[IUSER] = user;
+
             return user.Exists();
         }
 
         public IUser GetUser()
         {
-            return HttpContext.Current.Session[IUSER] as IUser;
+            return httpContextProvider.GetHttpSession()[IUSER] as IUser;
         }
     }
 }

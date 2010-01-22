@@ -51,7 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatService.cs" />
     <Compile Include="TagService.cs" />
-    <Compile Include="HttpUserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MadeUpStats.Data\MadeUpStats.Data\MadeUpStats.Data.csproj">

@@ -115,6 +115,7 @@
     <Compile Include="Routing\RouteConfigurator.cs" />
     <Compile Include="Services\DateFormatter.cs" />
     <Compile Include="Services\FeedService.cs" />
+    <Compile Include="Services\HttpUserSession.cs" />
     <Compile Include="Services\IFeedService.cs" />
     <Compile Include="Services\IMapper.cs" />
     <Compile Include="Services\MadeUpStatsMapper.cs" />

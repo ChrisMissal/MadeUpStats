@@ -9,7 +9,7 @@ namespace MadeUpStats.Web
             return new HttpContextWrapper(HttpContext.Current);
         }
 
-        public HttpSessionStateBase GetHttpSession()
+        public virtual HttpSessionStateBase GetHttpSession()
         {
             return GetCurrentHttpContext().Session;
         }

@@ -1,2 +1,3 @@
 
 - replace IHttpContextProvider dependency of UserInterfaceManager with IUserSession
+- implement an AutoMocking container for tests
