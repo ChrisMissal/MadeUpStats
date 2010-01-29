@@ -145,6 +145,7 @@
     <None Include="Views\Stat\create.spark" />
     <None Include="Views\Stat\stat.spark" />
     <None Include="Views\Tags\alltags.spark" />
+    <None Include="Views\Tags\tag.spark" />
     <None Include="Views\User\login.spark" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

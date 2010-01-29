@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Db4objects.Db4o, Version=7.12.126.14142, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dependencies\db4o\Db4objects.Db4o.dll</HintPath>
+    </Reference>
+    <Reference Include="Db4objects.Db4o.Linq, Version=7.12.126.14142, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dependencies\db4o\Db4objects.Db4o.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -39,15 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDataConfiguration.cs" />
     <Compile Include="InMemoryUserRepository.cs" />
+    <Compile Include="IObjectDatabase.cs" />
     <Compile Include="IStatValueRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStatRepository.cs" />
     <Compile Include="ITagRepository.cs" />
     <Compile Include="IUserRepository.cs" />
+    <Compile Include="ObjectDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InMemoryStatRepository.cs" />
     <Compile Include="InMemoryTagRepository.cs" />
+    <Compile Include="StatRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MadeUpStats.Domain\MadeUpStats.Domain.csproj">

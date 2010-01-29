@@ -3,7 +3,7 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Tests.Data
 {
-    public class StatHelper
+    public abstract class StatHelper
     {
         protected static Stat BlankStat
         {

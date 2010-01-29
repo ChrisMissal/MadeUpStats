@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\StatHelper.cs" />
+    <Compile Include="Data\StatRepositoryTests.cs" />
     <Compile Include="Domain\AuthorTests.cs" />
     <Compile Include="Domain\StatTests.cs" />
     <Compile Include="Domain\TagTests.cs" />

@@ -56,20 +56,6 @@ namespace MadeUpStats.Tests.Web.Controllers
         }
 
         [Fact]
-        public void StatController_should_return_a_StatViewModel_with_expected_StatText_for_Index()
-        {
-            var controller = GetController();
-            const string expectedStatText = "MVC is fun";
-            const string key = "some-key";
-            statService.Setup(x => x.GetStat(key)).Returns(new Stat("", expectedStatText, null, DateTime.Now));
-
-            var view = controller.Index(key) as ViewResult;
-            var model = view.ViewData.Model as StatDisplay;
-
-            Assert.Equal(expectedStatText, model.StatText);
-        }
-
-        [Fact]
         public void StatController_should_return_a_ViewResult_with_a_StatCreateModel_for_Create()
         {
             var controller = GetController();

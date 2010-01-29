@@ -22,11 +22,18 @@ namespace MadeUpStats.Web
                 x.ForRequestedType<IRouteConfigurator>().TheDefaultIsConcreteType<RouteConfigurator>();
                 x.ForRequestedType<IControllerFactory>().TheDefaultIsConcreteType<StructureMapControllerFactory>();
 
+                x.ForRequestedType<IObjectDatabase>()
+                    .TheDefaultIsConcreteType<ObjectDatabase>()
+                    .AsSingletons();
+                x.ForRequestedType<IDataConfiguration>()
+                    .TheDefaultIsConcreteType<DataConfiguration>()
+                    .AsSingletons();
+
                 x.ForRequestedType<IStatService>()
                     .TheDefaultIsConcreteType<StatService>()
                     .AsSingletons();
                 x.ForRequestedType<IStatRepository>()
-                    .TheDefaultIsConcreteType<InMemoryStatRepository>()
+                    .TheDefaultIsConcreteType<StatRepository>()
                     .AsSingletons();
 
                 x.ForRequestedType<ITagService>()

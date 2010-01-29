@@ -27,7 +27,9 @@ namespace MadeUpStats.Web.Controllers
                 return RedirectToAction<HomeController>(x => x.Index());
 
             var model = new StatDisplay();
-            model.StatText = stat.Description;
+            model.Description = stat.Description;
+            model.Title = stat.Title;
+            model.CreateDate = stat.CreateDate;
             return View(model);
         }
 
