@@ -49,7 +49,7 @@ namespace MadeUpStats.Services
 
         public IEnumerable<Stat> GetStatsByTag(Tag tag)
         {
-            throw new NotImplementedException();
+            return statRepository.GetByTag(tag);
         }
 
         public bool ContainsKey(string key)

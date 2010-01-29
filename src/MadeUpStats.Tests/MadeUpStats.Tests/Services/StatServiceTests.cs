@@ -109,6 +109,16 @@ namespace MadeUpStats.Tests.Services
             Assert.Throws<ArgumentNullException>(() => GetService().TagStat(stat, tagArray));
         }
 
+        [Fact]
+        public void GetStatsByTag_should_call_StatRepository_GetByTag()
+        {
+            var tag = new Tag("beer");
+
+            GetService().GetStatsByTag(tag);
+
+            statRepository.Verify(x => x.GetByTag(tag));
+        }
+
         private StatService GetService()
         {
             statRepository = new Mock<IStatRepository>();

@@ -45,5 +45,10 @@ namespace MadeUpStats.Data
         {
             return stats.Values.FirstOrDefault(x => x.Key == key);
         }
+
+        public IEnumerable<Stat> GetByTag(Tag tag)
+        {
+            return stats.Values.Where(x => x.Tags.Contains(tag));
+        }
     }
 }

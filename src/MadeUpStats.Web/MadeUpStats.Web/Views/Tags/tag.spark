@@ -1,0 +1,18 @@
+<use master="Application"/>
+
+<var model="ViewData.Model as MadeUpStats.Web.Models.TagDisplay" />
+<content name="head">
+	<title>Made Up Stats | Stats Tagged "${model.Name}"</title>
+</content>
+
+<content name="body">
+
+	<ul if="model.Stats.Any()">
+	<for each="var stat in model.Stats">
+		<li>
+      ${Html.ActionLink<StatController>(x => x.Index(stat.Key), stat.Title)}
+        <p>${stat.Description}</p>
+    </li>
+	</for>
+	</ul>
+</content>
