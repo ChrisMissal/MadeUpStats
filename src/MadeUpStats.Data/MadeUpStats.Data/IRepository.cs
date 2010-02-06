@@ -14,5 +14,7 @@ namespace MadeUpStats.Data
         IEnumerable<T> GetMostRecent(int count);
 
         T GetByKey(T1 key);
+
+        int GetCount();
     }
 }

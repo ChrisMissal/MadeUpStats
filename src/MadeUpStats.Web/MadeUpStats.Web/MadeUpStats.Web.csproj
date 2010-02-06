@@ -105,7 +105,7 @@
     <Compile Include="Models\AboutDisplay.cs" />
     <Compile Include="Models\ErrorIndexDisplay.cs" />
     <Compile Include="Models\HomeDisplay.cs" />
-    <Compile Include="Models\HomeInformationDisplay.cs" />
+    <Compile Include="Models\InformationDisplay.cs" />
     <Compile Include="Models\LoginInput.cs" />
     <Compile Include="Models\StatDisplay.cs" />
     <Compile Include="Models\StatInput.cs" />

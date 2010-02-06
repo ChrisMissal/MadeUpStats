@@ -16,5 +16,7 @@ namespace MadeUpStats.Services
         void Update(Stat stat);
 
         IEnumerable<Stat> GetStatsByTag(Tag tag);
+
+        int GetNumberOfStats();
     }
 }

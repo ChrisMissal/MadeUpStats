@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MadeUpStats.Domain;
@@ -39,6 +40,11 @@ namespace MadeUpStats.Data
         public Stat GetByKey(string key)
         {
             return objectDatabase.Query<Stat>().FirstOrDefault(stat => stat.Key == key);
+        }
+
+        public int GetCount()
+        {
+            return objectDatabase.Query<Stat>().Count();
         }
 
         public IEnumerable<Stat> GetByTag(Tag tag)

@@ -52,6 +52,11 @@ namespace MadeUpStats.Services
             return statRepository.GetByTag(tag);
         }
 
+        public int GetNumberOfStats()
+        {
+            return statRepository.GetCount();
+        }
+
         public bool ContainsKey(string key)
         {
             var stat = statRepository.GetByKey(key);

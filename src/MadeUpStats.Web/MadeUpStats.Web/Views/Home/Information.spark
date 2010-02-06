@@ -5,9 +5,19 @@
 </content>
 
 <content name="body">
-    <p>Made Up Stats is an open source project hosted on 
-		<a href="http://github.com">Github.com</a>. You are welcome, and 
-		encouraged to fork it and submit your own features.</p>
-    <p>The repository is located at <a href="http://github.com/ChrisMissal/MadeUpStats/tree/master">
-		http://github.com/ChrisMissal/MadeUpStats/tree/master</a>.
+  <var model="ViewData.Model as InformationDisplay" />
+  <dl>
+    <dt>Total Stats: </dt>
+    <dd>${model.StatCount}</dd>
+  </dl>
+  <p>
+    Made Up Stats is an open source project hosted on
+    <a href="http://github.com">Github.com</a>. You are welcome, and
+    encouraged to fork it and submit your own features.
+  </p>
+  <p>
+    The repository is located at <a href="http://github.com/ChrisMissal/MadeUpStats">
+      http://github.com/ChrisMissal/MadeUpStats
+    </a>.
+  </p>
 </content>

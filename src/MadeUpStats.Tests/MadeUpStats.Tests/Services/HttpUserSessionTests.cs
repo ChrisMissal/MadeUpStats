@@ -10,6 +10,7 @@ namespace MadeUpStats.Tests.Services
 {
     public class HttpUserSessionTests
     {
+        private Mock<HttpSessionStateBase> session;
         private Mock<IUserRepository> userRepository;
         private Mock<IHttpContextProvider> httpContextProvider;
 
@@ -17,8 +18,6 @@ namespace MadeUpStats.Tests.Services
         public void TrySignIn_should_call_Repository_with_UserName()
         {
             var userSession = GetUserSession();
-            var session = new Mock<HttpSessionStateBase>();
-            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
             userSession.TrySignIn("userName", "password");
 
@@ -29,8 +28,6 @@ namespace MadeUpStats.Tests.Services
         public void GetUser_should_be_gotten_from_IHttpContextProvider()
         {
             var userSession = GetUserSession();
-            var session = new Mock<HttpSessionStateBase>();
-            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
             userSession.GetUser();
 
@@ -41,8 +38,6 @@ namespace MadeUpStats.Tests.Services
         public void TrySignIn_should_set_IUser_to_HttpContextProvider_Session()
         {
             var userSession = GetUserSession();
-            var session = new Mock<HttpSessionStateBase>();
-            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
             userSession.TrySignIn("userName", "password");
 
@@ -53,18 +48,28 @@ namespace MadeUpStats.Tests.Services
         public void GetMessages_should_look_for_Queue_in_HttpContextProvider()
         {
             var userSession = GetUserSession();
-            var session = new Mock<HttpSessionStateBase>();
-            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
             userSession.GetMessages();
 
             session.Verify(x => x["messages"]);
         }
 
+        [Fact]
+        public void GetMessages_should_never_return_null()
+        {
+            var userSession = GetUserSession();
+
+            var messages = userSession.GetMessages();
+
+            messages.ShouldNotBeNull();
+        }
+
         private HttpUserSession GetUserSession()
         {
             userRepository = new Mock<IUserRepository>();
             httpContextProvider = new Mock<IHttpContextProvider>();
+            session = new Mock<HttpSessionStateBase>();
+            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
             return new HttpUserSession(httpContextProvider.Object, userRepository.Object);
         }

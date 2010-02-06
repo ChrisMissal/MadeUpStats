@@ -43,6 +43,11 @@ namespace MadeUpStats.Data
             return tags.FirstOrDefault(x => x.Key == key);
         }
 
+        public int GetCount()
+        {
+            return tags.Count;
+        }
+
         public IEnumerable<Tag> GetMostPopularTags(int count)
         {
             throw new NotImplementedException();

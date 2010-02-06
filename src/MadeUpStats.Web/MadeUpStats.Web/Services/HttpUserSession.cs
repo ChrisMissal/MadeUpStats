@@ -37,7 +37,8 @@ namespace MadeUpStats.Web.Services
 
         public Queue<string> GetMessages()
         {
-            return httpContextProvider.GetHttpSession()[MESSAGES] as Queue<string>;
+            var queue = httpContextProvider.GetHttpSession()[MESSAGES] as Queue<string>;
+            return queue ?? new Queue<string>();
         }
     }
 }
