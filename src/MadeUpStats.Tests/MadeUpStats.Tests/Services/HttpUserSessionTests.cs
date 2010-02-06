@@ -49,6 +49,18 @@ namespace MadeUpStats.Tests.Services
             session.VerifySet(x => x["IUSER"] = It.IsAny<IUser>());
         }
 
+        [Fact]
+        public void GetMessages_should_look_for_Queue_in_HttpContextProvider()
+        {
+            var userSession = GetUserSession();
+            var session = new Mock<HttpSessionStateBase>();
+            httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
+
+            userSession.GetMessages();
+
+            session.Verify(x => x["messages"]);
+        }
+
         private HttpUserSession GetUserSession()
         {
             userRepository = new Mock<IUserRepository>();

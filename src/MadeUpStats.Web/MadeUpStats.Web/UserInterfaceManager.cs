@@ -1,38 +1,35 @@
 using System.Collections.Generic;
+using MadeUpStats.Services;
 
 namespace MadeUpStats.Web
 {
     public class UserInterfaceManager : IUserInterfaceManager
     {
-        private readonly Stack<string> errorMessages = new Stack<string>();
-        private readonly IHttpContextProvider httpContextProvider;
+        private readonly IUserSession userSession;
 
-        public UserInterfaceManager(IHttpContextProvider httpContextProvider)
+        public UserInterfaceManager(IUserSession userSession)
         {
-            this.httpContextProvider = httpContextProvider;
+            this.userSession = userSession;
         }
 
         public void AddMessage(string message)
         {
-            var stack = GetErrorMessageStack();
-            stack.Push(message);
+            var queue = GetErrorMessageQueue();
+            queue.Enqueue(message);
         }
 
-        private Stack<string> GetErrorMessageStack()
+        private Queue<string> GetErrorMessageQueue()
         {
-            var errorMessageStack = new Stack<string>();
-            var stack = (Stack<string>)httpContextProvider.GetHttpSession()["errormessages"] ?? errorMessageStack;
-            httpContextProvider.GetHttpSession()["errormessages"] = stack;
-            return errorMessages;
+            return userSession.GetMessages();
         }
 
         public IEnumerable<string> GetMessages()
         {
             var messages = new List<string>();
-            var stack = GetErrorMessageStack();
-            while (stack.Count > 0)
-                messages.Add(stack.Pop());
-                /*yield return stack.Pop();*/
+            var queue = GetErrorMessageQueue();
+            while (queue.Count > 0)
+                messages.Add(queue.Dequeue());
+                
             return messages;
         }
     }

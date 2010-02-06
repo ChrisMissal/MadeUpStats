@@ -119,6 +119,21 @@ namespace MadeUpStats.Tests.Services
             statRepository.Verify(x => x.GetByTag(tag));
         }
 
+        [Fact]
+        public void GetMostRecentStats_should_call_StatRepository_GetMostRecentStats()
+        {
+            GetService().GetMostRecentStats(0);
+            statRepository.Verify(x => x.GetMostRecent(0));
+        }
+
+        [Fact]
+        public void Update_should_call_StatRepository_SaveOrUpdate()
+        {
+            var stat = new Stat(null, null, null, DateTime.Now);
+            GetService().Update(stat);
+            statRepository.Verify(x => x.SaveOrUpdate(stat));
+        }
+
         private StatService GetService()
         {
             statRepository = new Mock<IStatRepository>();

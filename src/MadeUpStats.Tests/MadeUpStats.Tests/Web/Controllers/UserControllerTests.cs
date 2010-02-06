@@ -80,6 +80,14 @@ namespace MadeUpStats.Tests.Web.Controllers
             result.ToAction<HomeController>(x => x.Index());
         }
 
+        [Fact]
+        public void Login_GET_should_return_a_LoginInput_as_the_Model()
+        {
+            var controller = GetController();
+            var result = controller.Login() as ViewResult;
+            result.AssertViewRendered().WithViewData<LoginInput>();
+        }
+
         private UserController GetController()
         {
             userSession = new Mock<IUserSession>();

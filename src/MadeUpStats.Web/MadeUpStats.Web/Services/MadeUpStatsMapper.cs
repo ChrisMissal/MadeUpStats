@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -9,14 +8,23 @@ namespace MadeUpStats.Web.Services
 {
     public class MadeUpStatsMapper : IMapper
     {
+        private static readonly bool initialized;
+        private static readonly object dummyLock = new object();
+
         static MadeUpStatsMapper()
         {
-            Mapper.CreateMap<Stat, StatDisplay>();
-        }
+            if(initialized)
+                return;
 
-        public TDestination Map<TDestination, TSource>(TSource source, TDestination destination)
-        {
-            return Mapper.Map(source, destination);
+            lock (dummyLock)
+            {
+                if(initialized)
+                    return;
+
+                Mapper.CreateMap<Stat, StatDisplay>();
+
+                initialized = true;
+            }
         }
 
         public IEnumerable<TDestination> Map<TSource, TDestination>(IEnumerable<TSource> sources)

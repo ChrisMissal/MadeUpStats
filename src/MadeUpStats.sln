@@ -16,9 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadeUpStats.Web", "MadeUpStats.Web\MadeUpStats.Web\MadeUpStats.Web.csproj", "{949F6F00-DB64-4DFB-93C8-000CA4AECA6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaskList", "TaskList", "{E07EBA3C-944A-4886-9EF6-E8DE7E52F707}"
-	ProjectSection(SolutionItems) = preProject
-		todo.txt = todo.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

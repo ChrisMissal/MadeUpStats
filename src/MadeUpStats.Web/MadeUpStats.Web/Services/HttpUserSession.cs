@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
 using MadeUpStats.Framework;
@@ -11,6 +13,7 @@ namespace MadeUpStats.Web.Services
         private readonly IUserRepository userRepository;
 
         private const string IUSER = "IUSER";
+        private const string MESSAGES = "messages";
 
         public HttpUserSession(IHttpContextProvider httpContextProvider, IUserRepository userRepository)
         {
@@ -30,6 +33,11 @@ namespace MadeUpStats.Web.Services
         public IUser GetUser()
         {
             return httpContextProvider.GetHttpSession()[IUSER] as IUser;
+        }
+
+        public Queue<string> GetMessages()
+        {
+            return httpContextProvider.GetHttpSession()[MESSAGES] as Queue<string>;
         }
     }
 }

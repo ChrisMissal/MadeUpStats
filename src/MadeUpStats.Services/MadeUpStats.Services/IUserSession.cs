@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MadeUpStats.Domain;
 
 namespace MadeUpStats.Services
@@ -7,5 +8,7 @@ namespace MadeUpStats.Services
         bool TrySignIn(string userName, string password);
 
         IUser GetUser();
+
+        Queue<string> GetMessages();
     }
 }

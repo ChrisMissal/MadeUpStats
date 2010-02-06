@@ -1,13 +1,10 @@
-using System;
 using System.Web.Mvc;
-using MadeUpStats.Domain;
 using MadeUpStats.Services;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Models;
 using Moq;
 using Xunit;
-using StatInput=MadeUpStats.Web.Models.StatInput;
 
 namespace MadeUpStats.Tests.Web.Controllers
 {
