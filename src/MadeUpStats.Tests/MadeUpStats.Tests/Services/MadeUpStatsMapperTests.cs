@@ -14,7 +14,7 @@ namespace MadeUpStats.Tests.Services
         public void MadeUpStatsMapper_should_map_many_Stats_to_StatDisplays()
         {
             // Arrange
-            var stats = new[] {new Stat("a", "", null, DateTime.Now), new Stat("b", "", null, DateTime.Now)};
+            var stats = new[] { new Stat("a", "b", new Author("a"), DateTime.Now), new Stat("b", "b", new Author("a"), DateTime.Now) };
 
             // Act
             var statDisplays = GetMapper().Map<Stat, StatDisplay>(stats);

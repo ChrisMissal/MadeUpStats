@@ -7,7 +7,7 @@ namespace MadeUpStats.Tests.Data
     {
         protected static Stat BlankStat
         {
-            get { return new Stat("", "", null, DateTime.Now); }
+            get { return new Stat("blank", "stat", new Author("author"), DateTime.Now); }
         }
     }
 }

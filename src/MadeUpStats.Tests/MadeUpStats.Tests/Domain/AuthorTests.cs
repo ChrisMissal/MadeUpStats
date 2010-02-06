@@ -19,7 +19,7 @@ namespace MadeUpStats.Tests.Domain
         {
             var author = new Author("Chris Missal");
 
-            var stat = new Stat(null, null, author, DateTime.Now);
+            var stat = new Stat("title", "desc", author, DateTime.Now);
 
             Assert.Same(stat.Author, author);
         }

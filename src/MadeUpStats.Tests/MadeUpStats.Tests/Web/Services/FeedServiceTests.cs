@@ -13,9 +13,9 @@ namespace MadeUpStats.Tests.Web.Services
         [Fact]
         public void Feed_created_from_Service_should_have_recent_Stats()
         {
-            var stat1 = new Stat(null, null, null, DateTime.Now);
-            var stat2 = new Stat(null, null, null, DateTime.Now);
-            var stat3 = new Stat(null, null, null, DateTime.Now);
+            var stat1 = new Stat("1", "2", new Author("3"), DateTime.Now);
+            var stat2 = new Stat("4", "5", new Author("6"), DateTime.Now);
+            var stat3 = new Stat("7", "8", new Author("9"), DateTime.Now);
 
             var stats = new[] { stat1, stat2, stat3 };
             var statService = new Mock<IStatService>();

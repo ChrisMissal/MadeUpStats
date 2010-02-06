@@ -44,7 +44,7 @@ namespace MadeUpStats.Tests.Data
         [Fact]
         public void GetMostRecent_should_be_OrderedDescending_by_Stat_CreateDate()
         {
-            var veryRecentStat = new Stat("", "", new Author("name"), DateTime.Now.AddDays(1));
+            var veryRecentStat = new Stat("title", "desc", new Author("name"), DateTime.Now.AddDays(1));
             var repository = GetRepository();
             var stats = new[] { BlankStat, veryRecentStat, BlankStat };
             objectDatabase.Setup(x => x.Query<Stat>()).Returns(stats);

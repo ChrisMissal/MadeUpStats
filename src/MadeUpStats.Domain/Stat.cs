@@ -15,6 +15,10 @@ namespace MadeUpStats.Domain
 
         public Stat(string title, string description, Author author, DateTime createDate)
         {
+            Validate.NotNullOrEmpty(description, "description");
+            Validate.NotNullOrEmpty(title, "title");
+            Validate.NotNull(author, "author");
+
             this.description = description;
             this.title = title;
             this.author = author;

@@ -3,13 +3,14 @@ using System.Linq;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
 using MadeUpStats.Services;
+using MadeUpStats.Tests.Data;
 using MadeUpStats.Tests.Fakes;
 using Moq;
 using Xunit;
 
 namespace MadeUpStats.Tests.Services
 {
-    public class StatServiceTests
+    public class StatServiceTests : StatHelper
     {
         private Mock<IStatRepository> statRepository;
 
@@ -85,7 +86,7 @@ namespace MadeUpStats.Tests.Services
         public void StatService_should_be_able_to_Tag_a_Stat()
         {
             var tags = new[] {new Tag("one"), new Tag("two"), new Tag("three")};
-            var stat = new Stat(null, null, null, DateTime.Now);
+            var stat = BlankStat;
 
             stat.Tags.Count().ShouldEqual(0);
 
@@ -97,16 +98,14 @@ namespace MadeUpStats.Tests.Services
         [Fact]
         public void StatService_should_not_tag_a_stat_with_a_null_tag_array()
         {
-            var stat = new Stat(null, null, null, DateTime.Now);
-            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(stat, null));
+            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(BlankStat, null));
         }
 
         [Fact]
         public void StatService_should_not_tag_a_stat_with_an_array_containing_null_tags()
         {
-            var stat = new Stat(null, null, null, DateTime.Now);
             var tagArray = new[] {new Tag("name"), null};
-            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(stat, tagArray));
+            Assert.Throws<ArgumentNullException>(() => GetService().TagStat(BlankStat, tagArray));
         }
 
         [Fact]
@@ -129,7 +128,7 @@ namespace MadeUpStats.Tests.Services
         [Fact]
         public void Update_should_call_StatRepository_SaveOrUpdate()
         {
-            var stat = new Stat(null, null, null, DateTime.Now);
+            var stat = BlankStat;
             GetService().Update(stat);
             statRepository.Verify(x => x.SaveOrUpdate(stat));
         }

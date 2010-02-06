@@ -16,7 +16,7 @@ namespace MadeUpStats.Tests.Web
             var mockDateFormatter = new Mock<DateFormatter>();
             var conventions = new MadeUpStatsConventions(mockDateFormatter.Object);
 
-            var stat = new Stat("", "", null, DateTime.Now);
+            var stat = new Stat("title", "desc", new Author("a"), DateTime.Now);
             var propertyInfo = stat.GetType().GetProperty("CreateDate");
 
             // Act
