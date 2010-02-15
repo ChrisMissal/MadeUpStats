@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dependencies\moq\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Moq.Contrib, Version=0.1.3211.31914, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dependencies\moq\Moq.Contrib.dll</HintPath>
+    </Reference>
     <Reference Include="MvcContrib, Version=1.0.0.916, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dependencies\mvccontrib\MvcContrib.dll</HintPath>

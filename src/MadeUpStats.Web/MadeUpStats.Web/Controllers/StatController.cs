@@ -1,9 +1,11 @@
 using System;
 using System.Web.Mvc;
+using MadeUpStats.Domain;
 using MadeUpStats.Framework;
 using MadeUpStats.Services;
 using MadeUpStats.Web.Attributes;
 using MadeUpStats.Web.Models;
+using MadeUpStats.Web.Services;
 using MvcContrib;
 
 namespace MadeUpStats.Web.Controllers
@@ -12,13 +14,15 @@ namespace MadeUpStats.Web.Controllers
     {
         private readonly IAuthorService authorService;
         private readonly ITagService tagService;
+        private readonly IMapper mapper;
         private readonly IStatService statService;
 
-        public StatController(IStatService statService, IAuthorService authorService, ITagService tagService, IUserInterfaceManager userInterfaceManager) : base(userInterfaceManager)
+        public StatController(IStatService statService, IAuthorService authorService, ITagService tagService, IUserInterfaceManager userInterfaceManager, IMapper mapper) : base(userInterfaceManager)
         {
             this.statService = statService;
             this.authorService = authorService;
             this.tagService = tagService;
+            this.mapper = mapper;
         }
 
         public ActionResult Index(string key)
@@ -27,19 +31,15 @@ namespace MadeUpStats.Web.Controllers
             if (stat == null)
                 return RedirectToAction<HomeController>(x => x.Index());
 
-            var model = new StatDisplay();
-            model.Description = stat.Description;
-            model.Title = stat.Title;
-            model.CreateDate = stat.CreateDate;
+            var model = mapper.Map<Stat, StatDisplay>(stat);
+
             return View(model);
         }
 
         [AllowAdmin, AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(StatInput))]
         public ActionResult Create()
         {
-            var createDataModel = ViewData.Model as StatInput;
-
-            var model = createDataModel ?? new StatInput();
+            var model = ViewData.Model as StatInput ?? new StatInput();
 
             return View(model);
         }
@@ -49,7 +49,7 @@ namespace MadeUpStats.Web.Controllers
         {
             try
             {
-                Validate.NotNull(statInput, "Stat data");
+                Validate.NotNull(statInput, "statInput");
 
                 var author = authorService.GetLoggedInAuthor();
 
@@ -65,7 +65,7 @@ namespace MadeUpStats.Web.Controllers
                 }
                 statService.Update(stat);
 
-                return RedirectToAction("Index", new { key = stat.Key });
+                return RedirectToAction<StatController>(x => x.Index(null), new{key = stat.Key});
             }
             catch (Exception ex)
             {

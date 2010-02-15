@@ -18,9 +18,7 @@ namespace MadeUpStats.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(LoginInput))]
         public ActionResult Login()
         {
-            var createDataModel = ViewData.Model as LoginInput;
-
-            var model = createDataModel ?? new LoginInput();
+            var model = ViewData.Model as LoginInput ?? new LoginInput();
 
             return View(model);
         }

@@ -19,19 +19,23 @@ namespace MadeUpStats.Web.Controllers
 
         public ActionResult AllTags()
         {
-            var model = new AllTagsDisplay();
-            model.Tags = tagService.GetTags(50);
+            var model = new AllTagsDisplay
+            {
+                Tags = tagService.GetTags(50)
+            };
             return View(model);
         }
 
         public ActionResult Index(string tagName)
         {
             if (tagName.IsNullOrEmpty())
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction<HomeController>(x => x.Index());
 
-            var model = new TagDisplay();
-            model.Name = tagName;
-            model.Stats = statService.GetStatsByTag(new Tag(tagName));
+            var model = new TagDisplay
+            {
+                Name = tagName,
+                Stats = statService.GetStatsByTag(new Tag(tagName))
+            };
             return View(model);
         }
     }

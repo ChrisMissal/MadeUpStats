@@ -1,5 +1,4 @@
 
 - implement an AutoMocking container for tests
-- http://www.markhneedham.com/blog/2010/01/22/automapper-first-thoughts/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+MarkNeedham+%28Mark+Needham%29&utm_content=Google+Reader
 - find redundant test code and refactor to keep tests small
 - add AutoMapper implementation for display objects <-> Stats, Tags, etc.

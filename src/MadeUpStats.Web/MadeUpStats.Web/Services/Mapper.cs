@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MadeUpStats.Domain;
@@ -25,6 +26,11 @@ namespace MadeUpStats.Web.Services
 
                 initialized = true;
             }
+        }
+
+        public TDestination Map<TSource, TDestination>(TSource source)
+        {
+            return mapper.Map<TSource, TDestination>(source);
         }
 
         public IEnumerable<TDestination> Map<TSource, TDestination>(IEnumerable<TSource> sources)

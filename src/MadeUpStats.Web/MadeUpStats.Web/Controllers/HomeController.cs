@@ -23,9 +23,9 @@ namespace MadeUpStats.Web.Controllers
             var stats = statService.GetMostRecentStats(5);
 
             var model = new HomeDisplay
-                            {
-                                FeaturedStats = mapper.Map<Stat, StatDisplay>(stats)
-                            };
+            {
+                FeaturedStats = mapper.Map<Stat, StatDisplay>(stats)
+            };
 
             return View(model);
         }
@@ -38,9 +38,9 @@ namespace MadeUpStats.Web.Controllers
         public ActionResult Information()
         {
             var model = new InformationDisplay
-                            {
-                                StatCount = statService.GetNumberOfStats()
-                            };
+            {
+                StatCount = statService.GetNumberOfStats()
+            };
 
             return View(model);
         }

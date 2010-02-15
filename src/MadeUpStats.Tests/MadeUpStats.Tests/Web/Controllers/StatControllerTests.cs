@@ -1,9 +1,12 @@
 using System.Web.Mvc;
+using MadeUpStats.Domain;
 using MadeUpStats.Services;
 using MadeUpStats.Web;
 using MadeUpStats.Web.Controllers;
 using MadeUpStats.Web.Models;
+using MadeUpStats.Web.Services;
 using Moq;
+using MvcContrib.TestHelper;
 using Xunit;
 
 namespace MadeUpStats.Tests.Web.Controllers
@@ -13,6 +16,7 @@ namespace MadeUpStats.Tests.Web.Controllers
         protected Mock<IStatService> statService;
         protected Mock<ITagService> tagService;
         protected Mock<IAuthorService> authorService;
+        protected Mock<IMapper> mapper;
 
         [Fact]
         public void StatController_should_AddErrorMessage_if_attempt_to_Create_stat_with_duplicate_key()
@@ -35,31 +39,33 @@ namespace MadeUpStats.Tests.Web.Controllers
 
             var view = controller.Index(key) as RedirectToRouteResult;
 
-            Assert.IsType(typeof (RedirectToRouteResult), view);
-            Assert.Equal("Index", view.RouteValues["action"]);
-            Assert.Equal("Home", view.RouteValues["controller"]);
+            view.AssertResultIs<RedirectToRouteResult>();
+            view.RouteValues["action"].ShouldEqual("Index");
+            view.RouteValues["controller"].ShouldEqual("Home");
         }
 
         [Fact]
-        public void StatController_should_return_a_ViewResult_with_a_StatViewModel_for_Index()
+        public void StatController_should_return_a_ViewResult_with_a_StatDisplay_for_Index()
         {
             var controller = GetController();
             const string key = "stat-key";
-            statService.Setup(x => x.GetStat(key)).Returns(BlankStat);
+            var stat = BlankStat;
+            statService.Setup(x => x.GetStat(key)).Returns(stat);
+            mapper.Setup(x => x.Map<Stat, StatDisplay>(stat)).Returns(new StatDisplay());
 
             var view = controller.Index(key) as ViewResult;
 
-            Assert.IsType(typeof(StatDisplay), view.ViewData.Model);
+            view.WithViewData<StatDisplay>();
         }
 
         [Fact]
-        public void StatController_should_return_a_ViewResult_with_a_StatCreateModel_for_Create()
+        public void StatController_should_return_a_ViewResult_with_a_StatInput_for_Create()
         {
             var controller = GetController();
 
             var view = controller.Create() as ViewResult;
 
-            Assert.IsType(typeof (StatInput), view.ViewData.Model);
+            view.WithViewData<StatInput>();
         }
 
         [Fact]
@@ -125,8 +131,9 @@ namespace MadeUpStats.Tests.Web.Controllers
             authorService = new Mock<IAuthorService>();
             tagService = new Mock<ITagService>();
             userInterfaceManager = new Mock<IUserInterfaceManager>();
+            mapper = new Mock<IMapper>();
 
-            return new StatController(statService.Object, authorService.Object, tagService.Object, userInterfaceManager.Object);
+            return new StatController(statService.Object, authorService.Object, tagService.Object, userInterfaceManager.Object, mapper.Object);
         }
     }
 }
