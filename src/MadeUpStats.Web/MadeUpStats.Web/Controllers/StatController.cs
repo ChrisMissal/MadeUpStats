@@ -36,7 +36,7 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        [AllowAdmin, AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(StatInput))]
+        [AllowAdmin, HttpGet, ModelStateRebind, RebindTempData(typeof(StatInput))]
         public ActionResult Create()
         {
             var model = ViewData.Model as StatInput ?? new StatInput();
@@ -44,7 +44,7 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        [AllowAdmin, AcceptVerbs(HttpVerbs.Post)]
+        [AllowAdmin, HttpPost]
         public ActionResult Create(StatInput statInput)
         {
             try

@@ -79,6 +79,9 @@
     <Compile Include="Attributes\AllowAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Attributes\HttpGetAttribute.cs" />
+    <Compile Include="Attributes\HttpMethodAttribute.cs" />
+    <Compile Include="Attributes\HttpPostAttribute.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\TagsController.cs" />

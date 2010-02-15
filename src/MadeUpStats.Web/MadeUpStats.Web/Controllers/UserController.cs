@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using MadeUpStats.Framework;
 using MadeUpStats.Services;
+using MadeUpStats.Web.Attributes;
 using MadeUpStats.Web.Models;
 
 namespace MadeUpStats.Web.Controllers
@@ -15,7 +16,7 @@ namespace MadeUpStats.Web.Controllers
             this.userSession = userSession;
         }
 
-        [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(LoginInput))]
+        [HttpGet, ModelStateRebind, RebindTempData(typeof(LoginInput))]
         public ActionResult Login()
         {
             var model = ViewData.Model as LoginInput ?? new LoginInput();
@@ -23,7 +24,7 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public ActionResult Login(LoginInput loginInput)
         {
             try
