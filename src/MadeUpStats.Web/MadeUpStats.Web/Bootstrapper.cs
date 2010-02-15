@@ -55,6 +55,10 @@ namespace MadeUpStats.Web
                     .TheDefaultIsConcreteType<HttpUserSession>()
                     .AlwaysUnique();
 
+                x.ForRequestedType<IUserAccessService>()
+                    .TheDefaultIsConcreteType<UserAccessService>()
+                    .AsSingletons();
+
                 x.ForRequestedType<IFeedService>()
                     .TheDefaultIsConcreteType<FeedService>()
                     .AsSingletons();

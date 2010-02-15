@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using MadeUpStats.Framework;
 using MadeUpStats.Services;
+using MadeUpStats.Web.Attributes;
 using MadeUpStats.Web.Models;
 using MvcContrib;
 
@@ -33,7 +34,7 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(StatInput))]
+        [AllowAdmin, AcceptVerbs(HttpVerbs.Get), ModelStateRebind, RebindTempData(typeof(StatInput))]
         public ActionResult Create()
         {
             var createDataModel = ViewData.Model as StatInput;
@@ -43,7 +44,7 @@ namespace MadeUpStats.Web.Controllers
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [AllowAdmin, AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(StatInput statInput)
         {
             try

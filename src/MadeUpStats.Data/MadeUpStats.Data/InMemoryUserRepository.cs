@@ -6,7 +6,8 @@ namespace MadeUpStats.Data
     {
         public IUser GetUser(string username)
         {
-            return new User(username);
+            var user = new User(username);
+            return user.WithRole("Admin");
         }
     }
 }

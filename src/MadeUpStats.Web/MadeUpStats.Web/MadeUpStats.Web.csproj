@@ -75,6 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AllowAdminAttribute.cs" />
+    <Compile Include="Attributes\AllowAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
