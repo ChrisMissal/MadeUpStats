@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Web;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
@@ -61,7 +62,18 @@ namespace MadeUpStats.Tests.Services
 
             var messages = userSession.GetMessages();
 
-            messages.ShouldNotBeNull();
+            messages.ShouldNotBeNull(); 
+        }
+
+        [Fact]
+        public void GetMessages_should_set_userSession_Messages_if_null()
+        {
+            var userSession = GetUserSession();
+            session.SetupGet(x => x["messages"]).Returns(null);
+
+            userSession.GetMessages();
+
+            session.VerifySet(x => x["messages"] = new Queue<string>());
         }
 
         private HttpUserSession GetUserSession()

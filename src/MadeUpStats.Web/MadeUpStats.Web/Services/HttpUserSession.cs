@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MadeUpStats.Data;
 using MadeUpStats.Domain;
@@ -37,8 +36,9 @@ namespace MadeUpStats.Web.Services
 
         public Queue<string> GetMessages()
         {
-            var queue = httpContextProvider.GetHttpSession()[MESSAGES] as Queue<string>;
-            return queue ?? new Queue<string>();
+            var session = httpContextProvider.GetHttpSession();
+
+            return (session[MESSAGES] ?? (session[MESSAGES] = new Queue<string>()) as Queue<string>) as Queue<string>;
         }
     }
 }
