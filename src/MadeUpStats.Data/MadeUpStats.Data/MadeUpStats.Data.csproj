@@ -48,16 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDataConfiguration.cs" />
-    <Compile Include="InMemoryUserRepository.cs" />
+    <Compile Include="UserRepository.cs" />
     <Compile Include="IObjectDatabase.cs" />
-    <Compile Include="IStatValueRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStatRepository.cs" />
     <Compile Include="ITagRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="ObjectDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InMemoryTagRepository.cs" />
+    <Compile Include="TagRepository.cs" />
     <Compile Include="StatRepository.cs" />
   </ItemGroup>
   <ItemGroup>

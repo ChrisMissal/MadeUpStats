@@ -2,7 +2,7 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Data
 {
-    public class InMemoryUserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         public IUser GetUser(string username)
         {

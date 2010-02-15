@@ -9,7 +9,7 @@ using Xunit;
 
 namespace MadeUpStats.Tests.Services
 {
-    public class HttpUserSessionTests
+    public class UserSessionTests
     {
         private Mock<HttpSessionStateBase> session;
         private Mock<IUserRepository> userRepository;
@@ -76,14 +76,14 @@ namespace MadeUpStats.Tests.Services
             session.VerifySet(x => x["messages"] = new Queue<string>());
         }
 
-        private HttpUserSession GetUserSession()
+        private UserSession GetUserSession()
         {
             userRepository = new Mock<IUserRepository>();
             httpContextProvider = new Mock<IHttpContextProvider>();
             session = new Mock<HttpSessionStateBase>();
             httpContextProvider.Setup(x => x.GetHttpSession()).Returns(session.Object);
 
-            return new HttpUserSession(httpContextProvider.Object, userRepository.Object);
+            return new UserSession(httpContextProvider.Object, userRepository.Object);
         }
     }
 }

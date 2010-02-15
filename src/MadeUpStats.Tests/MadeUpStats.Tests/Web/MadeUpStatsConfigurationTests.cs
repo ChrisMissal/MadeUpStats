@@ -13,7 +13,7 @@ namespace MadeUpStats.Tests.Web
         {
             var routeConfigurator = new Mock<IRouteConfigurator>();
 
-            var configuration = new MadeUpStatsConfiguration(routeConfigurator.Object, null);
+            var configuration = new MvcConfiguration(routeConfigurator.Object, null);
 
             configuration.GetRouteConfigurator().ShouldBe(routeConfigurator.Object);
         }
@@ -23,7 +23,7 @@ namespace MadeUpStats.Tests.Web
         {
             var controllerFactory = new Mock<IControllerFactory>();
 
-            var configuration = new MadeUpStatsConfiguration(null, controllerFactory.Object);
+            var configuration = new MvcConfiguration(null, controllerFactory.Object);
 
             configuration.GetControllerFactory().ShouldBe(controllerFactory.Object);
         }
@@ -31,7 +31,7 @@ namespace MadeUpStats.Tests.Web
         [Fact]
         public void MadeUpStatsConfiguration_should_return_a_non_null_IViewEngine()
         {
-            new MadeUpStatsConfiguration(null, null).GetViewEngine().ShouldNotBeNull();
+            new MvcConfiguration(null, null).GetViewEngine().ShouldNotBeNull();
         }
     }
 }

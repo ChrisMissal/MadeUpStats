@@ -6,7 +6,7 @@ using MadeUpStats.Services;
 
 namespace MadeUpStats.Web.Services
 {
-    public class HttpUserSession : IUserSession
+    public class UserSession : IUserSession
     {
         private readonly IHttpContextProvider httpContextProvider;
         private readonly IUserRepository userRepository;
@@ -14,7 +14,7 @@ namespace MadeUpStats.Web.Services
         private const string IUSER = "IUSER";
         private const string MESSAGES = "messages";
 
-        public HttpUserSession(IHttpContextProvider httpContextProvider, IUserRepository userRepository)
+        public UserSession(IHttpContextProvider httpContextProvider, IUserRepository userRepository)
         {
             this.httpContextProvider = httpContextProvider;
             this.userRepository = userRepository;

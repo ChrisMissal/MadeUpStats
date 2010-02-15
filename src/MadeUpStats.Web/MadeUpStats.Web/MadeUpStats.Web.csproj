@@ -121,14 +121,14 @@
     <Compile Include="Routing\RouteConfigurator.cs" />
     <Compile Include="Services\DateFormatter.cs" />
     <Compile Include="Services\FeedService.cs" />
-    <Compile Include="Services\HttpUserSession.cs" />
+    <Compile Include="Services\UserSession.cs" />
     <Compile Include="Services\IFeedService.cs" />
     <Compile Include="Services\IMapper.cs" />
-    <Compile Include="Services\MadeUpStatsMapper.cs" />
+    <Compile Include="Services\Mapper.cs" />
     <Compile Include="Services\StringSplitter.cs" />
     <Compile Include="UserInterfaceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StructureMapControllerFactory.cs" />
+    <Compile Include="ControllerFactory.cs" />
     <Compile Include="Views\MadeUpStatsViewPage.cs">
     </Compile>
   </ItemGroup>

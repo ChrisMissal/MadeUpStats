@@ -4,7 +4,7 @@ using System.Web.Routing;
 
 namespace MadeUpStats.Web
 {
-    public class StructureMapControllerFactory : DefaultControllerFactory
+    public class ControllerFactory : DefaultControllerFactory
     {
         public override IController CreateController(RequestContext requestContext, string controllerName)
         {

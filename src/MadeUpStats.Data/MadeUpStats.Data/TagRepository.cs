@@ -5,7 +5,7 @@ using MadeUpStats.Domain;
 
 namespace MadeUpStats.Data
 {
-    public class InMemoryTagRepository : ITagRepository
+    public class TagRepository : ITagRepository
     {
         private readonly List<Tag> tags = new List<Tag>();
 

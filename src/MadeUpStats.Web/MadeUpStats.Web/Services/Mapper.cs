@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using MadeUpStats.Domain;
 using MadeUpStats.Web.Models;
+using mapper = AutoMapper.Mapper;
 
 namespace MadeUpStats.Web.Services
 {
-    public class MadeUpStatsMapper : IMapper
+    public class Mapper : IMapper
     {
         private static readonly bool initialized;
         private static readonly object dummyLock = new object();
 
-        static MadeUpStatsMapper()
+        static Mapper()
         {
             if(initialized)
                 return;
@@ -21,7 +21,7 @@ namespace MadeUpStats.Web.Services
                 if(initialized)
                     return;
 
-                Mapper.CreateMap<Stat, StatDisplay>();
+                mapper.CreateMap<Stat, StatDisplay>();
 
                 initialized = true;
             }
@@ -29,7 +29,7 @@ namespace MadeUpStats.Web.Services
 
         public IEnumerable<TDestination> Map<TSource, TDestination>(IEnumerable<TSource> sources)
         {
-             return Mapper.Map<TSource[], IEnumerable<TDestination>>(sources.ToArray());
+             return mapper.Map<TSource[], IEnumerable<TDestination>>(sources.ToArray());
         }
     }
 }

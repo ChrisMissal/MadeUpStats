@@ -6,12 +6,12 @@ using Spark.Web.Mvc;
 
 namespace MadeUpStats.Web
 {
-    public class MadeUpStatsConfiguration : IMvcConfiguration
+    public class MvcConfiguration : IMvcConfiguration
     {
         private readonly IRouteConfigurator routeConfigurator;
         private readonly IControllerFactory controllerFactory;
 
-        public MadeUpStatsConfiguration(IRouteConfigurator routeConfigurator, IControllerFactory controllerFactory)
+        public MvcConfiguration(IRouteConfigurator routeConfigurator, IControllerFactory controllerFactory)
         {
             this.routeConfigurator = routeConfigurator;
             this.controllerFactory = controllerFactory;

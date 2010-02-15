@@ -28,7 +28,7 @@ namespace MadeUpStats.Tests.Services
 
         private static IMapper GetMapper()
         {
-            return new MadeUpStatsMapper();
+            return new Mapper();
         }
     }
 }
