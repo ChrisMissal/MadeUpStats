@@ -7,11 +7,12 @@ namespace MadeUpStats.Data
 {
     public class TagRepository : ITagRepository
     {
+        private readonly IStatRepository statRepository;
         private readonly List<Tag> tags = new List<Tag>();
 
-        public Tag GetById(long id)
+        public TagRepository(IStatRepository statRepository)
         {
-            throw new NotImplementedException();
+            this.statRepository = statRepository;
         }
 
         public void SaveOrUpdate(Tag tag)
@@ -35,7 +36,9 @@ namespace MadeUpStats.Data
 
         public IEnumerable<Tag> GetMostRecent(int count)
         {
-            throw new NotImplementedException();
+            return GetAll()
+                .OrderByDescending(x => x.CreateDate)
+                .Take(count);
         }
 
         public Tag GetByKey(string key)
@@ -50,7 +53,11 @@ namespace MadeUpStats.Data
 
         public IEnumerable<Tag> GetMostPopularTags(int count)
         {
-            throw new NotImplementedException();
+            // this seems ridiculous right now... eventually it will go away
+            return statRepository.GetAll()
+                .OrderByDescending(x => x.Tags.Count())
+                .Take(count)
+                .SelectMany(x => x.Tags);
         }
 
         public IEnumerable<Tag> GetTags(int count)

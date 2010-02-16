@@ -1,3 +1,4 @@
+using System;
 using MadeUpStats.Framework;
 
 namespace MadeUpStats.Domain
@@ -5,17 +6,24 @@ namespace MadeUpStats.Domain
     public class Tag : IKeyable<string>
     {
         private readonly string name;
+        private readonly DateTime createDate;
 
         public Tag(string name)
         {
             Validate.Keyable(name, "name");
 
             this.name = name;
+            createDate = DateTime.Now;
         }
 
         public virtual string Name
         {
             get { return name; }
+        }
+
+        public virtual DateTime CreateDate
+        {
+            get { return createDate; }
         }
 
         public override bool Equals(object obj)
