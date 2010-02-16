@@ -8,8 +8,6 @@ namespace MadeUpStats.Domain
 
         public Tag(string name)
         {
-            Validate.NotNull(name, "name");
-            Validate.NotEmpty(name, "name");
             Validate.Keyable(name, "name");
 
             this.name = name;

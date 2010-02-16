@@ -16,6 +16,8 @@ namespace MadeUpStats.Framework
 
         public static void NotEmpty(object obj, string paramName)
         {
+            NotNull(obj, paramName);
+
             if (obj.Equals(string.Empty))
                 throw new ArgumentException(NOT_EMPTY.FormatWith(paramName), paramName);
         }
@@ -28,7 +30,9 @@ namespace MadeUpStats.Framework
 
         public static void Keyable(string key, string paramName)
         {
-            if(!Framework.Keyable.CreateKey(key).Equals(key))
+            NotNullOrEmpty(key, paramName);
+
+            if (!Framework.Keyable.CreateKey(key).Equals(key))
                 throw new ArgumentException(NOT_KEYABLE.FormatWith(key, paramName));
         }
     }

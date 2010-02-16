@@ -17,8 +17,8 @@ namespace MadeUpStats.Services
 
         public Stat CreateStat(Author author, string title, string description)
         {
-            Validate.NotNull(description, "description");
             Validate.NotEmpty(description, "description");
+            Validate.NotEmpty(title, "title");
 
             var stat = new Stat(title, description, author, DateTime.Now);
             var key = Keyable.CreateKey(title); 
